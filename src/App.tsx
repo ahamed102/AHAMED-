@@ -41,6 +41,8 @@ import {
 } from 'lucide-react';
 
 export default function App() {
+  const [hasStarted, setHasStarted] = useState<boolean>(false);
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<'home' | 'academy' | 'news' | 'market' | 'security' | 'community'>('home');
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -85,6 +87,118 @@ export default function App() {
     const rawUser = clean.startsWith('@') ? clean.slice(1) : clean;
     return `https://x.com/${rawUser}`;
   };
+
+  const handleGetStarted = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setHasStarted(true);
+      setIsTransitioning(false);
+    }, 1800);
+  };
+
+  if (isTransitioning) {
+    return (
+      <div className="min-h-screen w-full bg-[#030616] flex flex-col justify-center items-center relative overflow-hidden font-sans select-none">
+        {/* Ambient subtle blur layer */}
+        <div className="absolute inset-0 bg-[#020512] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-cyan-550/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-550/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col items-center space-y-10 text-center px-6">
+          
+          {/* Logo container inside loading phase */}
+          <div className="relative p-1 rounded-xl bg-gradient-to-tr from-cyan-400 via-blue-500 to-indigo-500 shadow-[0_0_20px_rgba(34,211,238,0.35)] shrink-0 transform scale-110 animate-bounce">
+            <img 
+              src="https://i.ibb.co.com/yc1X5cSZ/file-00000000d04c720688326604b1677a03.png" 
+              alt="Bangladesh Crypto Currency Portal Logo" 
+              className="h-14 w-14 object-contain rounded-lg bg-slate-900 p-1.5 border-0" 
+              referrerPolicy="no-referrer"
+            />
+          </div>
+
+          {/* Dynamic 5-Color rotating circular segmented spinner */}
+          <div className="relative w-28 h-28 flex items-center justify-center select-none pointer-events-none">
+            {/* Color 1: Cyan outer wheel segment */}
+            <div className="absolute inset-0 rounded-full border-[3.5px] border-t-cyan-400 border-r-transparent border-b-transparent border-l-transparent animate-spin" style={{ animationDuration: '0.8s' }} />
+            {/* Color 2: Emerald second ring */}
+            <div className="absolute inset-2 rounded-full border-[3.5px] border-t-transparent border-r-emerald-400 border-b-transparent border-l-transparent animate-spin" style={{ animationDuration: '1.2s', animationDirection: 'reverse' }} />
+            {/* Color 3: Purple third ring */}
+            <div className="absolute inset-4 rounded-full border-[3.5px] border-t-transparent border-r-transparent border-b-indigo-500 border-l-transparent animate-spin" style={{ animationDuration: '0.6s' }} />
+            {/* Color 4: Amber fourth ring */}
+            <div className="absolute inset-6 rounded-full border-[3.5px] border-t-transparent border-r-transparent border-b-transparent border-l-amber-500 animate-spin" style={{ animationDuration: '1.5s', animationDirection: 'reverse' }} />
+            {/* Color 5: Rose central core pulse */}
+            <div className="absolute inset-8 rounded-full border-[2.5px] border-rose-450 bg-rose-500/20 animate-pulse" />
+          </div>
+
+          {/* Web service identity display */}
+          <div className="space-y-4 max-w-lg">
+            <h2 className="text-3xl md:text-5xl font-black italic tracking-tighter uppercase text-white leading-tight drop-shadow-[0_2px_15px_rgba(255,255,255,0.05)]">
+              Bangladesh <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-300">Crypto</span> Currency
+            </h2>
+            <div className="h-[2px] w-20 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto" />
+            <p className="text-[10px] md:text-xs font-bold font-mono text-cyan-400 uppercase tracking-[0.25em] animate-pulse">
+              Synchronizing Portal Gateway...
+            </p>
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+
+  if (!hasStarted) {
+    return (
+      <div className="min-h-screen w-full bg-[#04081c] flex flex-col justify-center items-center relative overflow-hidden font-sans select-none selection:bg-cyan-500 selection:text-white">
+        {/* Subtle grid background to make it high tech & premium */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b12_1px,transparent_1px),linear-gradient(to_bottom,#1e293b12_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
+        
+        {/* Top-left corner logo */}
+        <div className="absolute top-6 left-6 md:top-8 md:left-8 flex items-center gap-3 z-10">
+          <div className="relative p-1 rounded-xl bg-gradient-to-tr from-cyan-400 via-blue-500 to-indigo-500 shadow-[0_0_15px_rgba(34,211,238,0.5)] shrink-0">
+            <img 
+              src="https://i.ibb.co.com/yc1X5cSZ/file-00000000d04c720688326604b1677a03.png" 
+              alt="Bangladesh Crypto Currency Portal Logo" 
+              className="h-10 w-10 md:h-12 md:w-12 object-contain rounded-lg bg-slate-900 p-1 border-0" 
+              referrerPolicy="no-referrer"
+            />
+          </div>
+          <span className="hidden sm:inline text-xs font-black uppercase text-cyan-450 tracking-wider font-mono">
+            Portal Gateway
+          </span>
+        </div>
+
+        {/* Central Landing Hero */}
+        <div className="relative z-10 text-center max-w-4xl px-6 py-12 flex flex-col items-center space-y-8 animate-fade-in">
+          <div className="space-y-4">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black italic tracking-tighter uppercase text-white leading-none">
+              Bangladesh <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-300 drop-shadow-[0_2px_10px_rgba(34,211,238,0.25)]">Crypto</span> Currency
+            </h1>
+          </div>
+
+          {/* Simple informative summary in the center */}
+          <p className="text-xs md:text-sm text-slate-300 leading-relaxed max-w-xl mx-auto bg-[#0b112c]/40 p-5 rounded-2xl border border-blue-500/10">
+            A non-profit academic sanctuary. We build active knowledge layers to empower freelancers, investigate scams, and establish peer-to-peer security workflows across structural landscapes.
+          </p>
+
+          {/* Centered Spaced Get Started Button */}
+          <div className="pt-2">
+            <button
+              onClick={handleGetStarted}
+              className="px-10 py-4 bg-gradient-to-r from-blue-600 via-cyan-500 to-cyan-400 hover:from-blue-500 hover:to-cyan-300 text-white font-black text-xs md:text-sm uppercase tracking-widest rounded-2xl shadow-[0_4px_24px_rgba(34,211,238,0.45)] hover:shadow-[0_4px_30px_rgba(34,211,238,0.6)] transform hover:scale-[1.04] active:scale-95 transition-all cursor-pointer border border-cyan-300/30"
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
+
+        {/* Footer Credit of landing Page */}
+        <div className="absolute bottom-6 text-center text-[10px] text-slate-500 tracking-wider">
+          Proudly Supported by Verse Community
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#060a1d] text-slate-100 flex flex-col font-sans selection:bg-cyan-500 selection:text-white">
@@ -144,18 +258,6 @@ export default function App() {
                     {lang === 'bn' && 'বাংলা'}
                   </button>
                 ))}
-              </div>
-
-              {/* Structured Search Box */}
-              <div className="relative w-full md:w-72">
-                <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-blue-300/60 font-semibold" />
-                <input 
-                  type="text" 
-                  placeholder={getHelperText('Search all secret modules...', 'মডিউলে অনুসন্ধান করুন...')}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-[#11193a] border border-blue-500/25 rounded-xl px-4 py-2.5 pl-10 text-xs text-white focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/10 w-full transition-colors font-medium shadow-inner placeholder:text-blue-300/40"
-                />
               </div>
             </div>
           </div>
