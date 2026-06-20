@@ -25,9 +25,10 @@ interface ExpandedTopicModalProps {
   topic: Topic;
   onClose: () => void;
   language: 'en' | 'bn' | 'bilingual';
+  inlineMode?: boolean;
 }
 
-export default function ExpandedTopicModal({ topic, onClose, language }: ExpandedTopicModalProps) {
+export default function ExpandedTopicModal({ topic, onClose, language, inlineMode = false }: ExpandedTopicModalProps) {
   const [activeTab, setActiveTab] = useState<'read' | 'interact'>('read');
   
   // Interactive 1: Tokens Search
@@ -267,17 +268,12 @@ export default function ExpandedTopicModal({ topic, onClose, language }: Expande
     return `${enVal} / ${bnVal}`;
   };
 
-  return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/70 backdrop-blur-sm overflow-y-auto"
+  const contentBody = (
+    <div 
+      className={`relative w-full max-w-4xl bg-white border border-rose-200/90 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col ${inlineMode ? '' : 'max-h-[90vh]'}`}
     >
-      <div 
-        className="relative w-full max-w-4xl bg-white border border-rose-200/90 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden max-h-[90vh] flex flex-col"
-      >
-        {/* Header Block */}
-        <div className="flex items-center justify-between p-6 border-b border-rose-100 bg-rose-50/40">
+      {/* Header Block */}
+      <div className="flex items-center justify-between p-6 border-b border-rose-100 bg-rose-50/40">
           <div className="flex flex-col gap-1.5 max-w-[85%]">
             <span className="text-[10px] font-black tracking-[0.2em] uppercase text-rose-750 bg-rose-500/10 px-2.5 py-1 rounded-md border border-rose-450/30 self-start">
               {topic.category}
@@ -785,6 +781,23 @@ export default function ExpandedTopicModal({ topic, onClose, language }: Expande
           </button>
         </div>
       </div>
+  );
+
+  if (inlineMode) {
+    return (
+      <div className="w-full max-w-4xl mx-auto flex flex-col animate-fade-in" id="topic-detail-inline-container">
+        {contentBody}
+      </div>
+    );
+  }
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/70 backdrop-blur-sm overflow-y-auto"
+    >
+      {contentBody}
     </motion.div>
   );
 }
