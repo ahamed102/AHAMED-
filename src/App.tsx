@@ -193,8 +193,26 @@ export default function App() {
         </div>
 
         {/* Footer Credit of landing Page */}
-        <div className="absolute bottom-6 text-center text-[10px] text-slate-500 tracking-wider">
-          Proudly Supported by Verse Community
+        <div className="absolute bottom-6 flex flex-col sm:flex-row items-center justify-center gap-3 text-[10px] tracking-widest font-mono select-none">
+          <a 
+            href="https://t.me/GetVerse" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400 font-bold transition-all"
+          >
+            <span>join TG verse community</span>
+            <ExternalLink size={10} />
+          </a>
+          <span className="text-slate-700 hidden sm:inline">•</span>
+          <a 
+            href="https://x.com/VerseEcosystem" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 hover:text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400 font-bold transition-all"
+          >
+            <span>join X verse community</span>
+            <ExternalLink size={10} />
+          </a>
         </div>
       </div>
     );
@@ -713,17 +731,24 @@ export default function App() {
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-blue-200">
-            <span>{getHelperText('Proudly aligned under', 'গৌরবের সাথে')}</span>
-            <Heart size={12} className="text-red-500 fill-red-500 animate-pulse" />
-            <span>{getHelperText('the support of the', 'সমর্থন ও দিকনির্দেশনায়')}</span>
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-xs">
             <a 
               href="https://t.me/GetVerse" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="font-bold text-cyan-400 hover:underline hover:text-cyan-300 transition"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 hover:text-cyan-200 hover:bg-cyan-500/20 hover:border-cyan-400 font-bold tracking-wider transition-all shadow-md shadow-black/20 animate-pulse"
             >
-              Verse Community
+              <span>join TG verse community</span>
+              <ExternalLink size={11} />
+            </a>
+            <a 
+              href="https://x.com/VerseEcosystem" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 hover:text-indigo-200 hover:bg-indigo-500/20 hover:border-indigo-400 font-bold tracking-wider transition-all shadow-md shadow-black/20"
+            >
+              <span>join X verse community</span>
+              <ExternalLink size={11} />
             </a>
           </div>
         </div>
