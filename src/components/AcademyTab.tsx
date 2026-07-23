@@ -14,21 +14,10 @@ export default function AcademyTab({ language }: AcademyTabProps) {
   const [gasLimit, setGasLimit] = useState<number>(21000); // Standard transfer
   const [ethPrice, setEthPrice] = useState<number>(3500);
 
-  const getTxt = (en: string, bn: string) => {
-    if (language === 'en') return en;
-    if (language === 'bn') return bn;
-    return `${bn} (${en})`;
-  };
+  const getTxt = (en: string, _bn?: string) => en;
 
-  const getBilingualDesc = (en: string, bn: string) => {
-    if (language === 'en') return <p className="text-slate-200 text-sm leading-relaxed">{en}</p>;
-    if (language === 'bn') return <p className="text-blue-100 text-sm leading-relaxed">{bn}</p>;
-    return (
-      <div className="space-y-2">
-        <p className="text-blue-100 text-sm leading-relaxed">{bn}</p>
-        <p className="text-slate-400 text-xs leading-relaxed border-l-2 border-cyan-500/40 pl-3 italic">{en}</p>
-      </div>
-    );
+  const getBilingualDesc = (en: string, _bn?: string) => {
+    return <p className="text-slate-200 text-sm leading-relaxed">{en}</p>;
   };
 
   // 16 Detailed learning modules covering all requirements of the user's list

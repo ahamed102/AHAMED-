@@ -20,10 +20,8 @@ export default function TopicCard({ topic, onClick, index, language }: TopicCard
     return <LucideIcons.BookOpen className="text-cyan-600 stroke-[1.8]" size={24} />;
   };
 
-  const getLabel = (enVal: string, bnVal: string) => {
-    if (language === 'en') return enVal;
-    if (language === 'bn') return bnVal;
-    return `${enVal} / ${bnVal}`;
+  const getLabel = (enVal: string, _bnVal?: string) => {
+    return enVal;
   };
 
   return (
@@ -57,34 +55,12 @@ export default function TopicCard({ topic, onClick, index, language }: TopicCard
 
           {/* Title */}
           <h3 className="text-base md:text-lg tracking-tight leading-snug transition-colors">
-            {language === 'en' && (
-              <span className="block text-slate-900 group-hover:text-blue-700 font-extrabold">{topic.titleEn}</span>
-            )}
-            {language === 'bn' && (
-              <span className="block text-blue-900 group-hover:text-cyan-800 font-black">{topic.titleBn}</span>
-            )}
-            {language === 'bilingual' && (
-              <>
-                <span className="block text-slate-900 group-hover:text-blue-700 font-extrabold text-base md:text-lg">{topic.titleEn}</span>
-                <span className="block text-blue-900 font-black text-xs md:text-sm mt-1.5 pt-1.5 border-t border-blue-150/40">{topic.titleBn}</span>
-              </>
-            )}
+            <span className="block text-slate-900 group-hover:text-blue-700 font-extrabold">{topic.titleEn}</span>
           </h3>
 
           {/* Description */}
           <p className="mt-3 text-xs md:text-sm leading-relaxed transition-colors">
-            {language === 'en' && (
-              <span className="block text-neutral-800 group-hover:text-neutral-950 font-medium">{topic.shortDescriptionEn}</span>
-            )}
-            {language === 'bn' && (
-              <span className="block text-blue-800 font-semibold">{topic.shortDescriptionBn}</span>
-            )}
-            {language === 'bilingual' && (
-              <>
-                <span className="block text-neutral-800 font-medium group-hover:text-neutral-950 leading-relaxed mb-2">{topic.shortDescriptionEn}</span>
-                <span className="block text-blue-800 font-bold text-[11px] md:text-xs border-l-2 border-blue-400 pl-2 bg-blue-50/50 py-1 rounded-r leading-relaxed">{topic.shortDescriptionBn}</span>
-              </>
-            )}
+            <span className="block text-neutral-800 group-hover:text-neutral-950 font-medium">{topic.shortDescriptionEn}</span>
           </p>
         </div>
 

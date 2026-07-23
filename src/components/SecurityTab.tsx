@@ -20,21 +20,10 @@ export default function SecurityTab({ language }: SecurityTabProps) {
   const [sandboxWords, setSandboxWords] = useState<string[]>(Array(12).fill(''));
   const [revealSandbox, setRevealSandbox] = useState<boolean>(false);
 
-  const getTxt = (en: string, bn: string) => {
-    if (language === 'en') return en;
-    if (language === 'bn') return bn;
-    return `${bn} (${en})`;
-  };
+  const getTxt = (en: string, _bn?: string) => en;
 
-  const getBilingualDesc = (en: string, bn: string) => {
-    if (language === 'en') return <p className="text-slate-205 text-xs md:text-sm leading-relaxed">{en}</p>;
-    if (language === 'bn') return <p className="text-blue-100 text-xs md:text-sm leading-relaxed">{bn}</p>;
-    return (
-      <div className="space-y-1.5">
-        <p className="text-blue-105 text-xs md:text-sm leading-relaxed">{bn}</p>
-        <p className="text-slate-400 text-[11px] leading-relaxed border-l border-cyan-500/25 pl-2.5 italic">{en}</p>
-      </div>
-    );
+  const getBilingualDesc = (en: string, _bn?: string) => {
+    return <p className="text-slate-205 text-xs md:text-sm leading-relaxed">{en}</p>;
   };
 
   // Compute live security score based on checked practices

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { POPULAR_COINS } from '../data/topicsData';
 import { Coins, Heart, AlertCircle, TrendingUp, TrendingDown, RefreshCw, Calculator, BookOpen, Layers } from 'lucide-react';
+import LiveCryptoMarketChart from './LiveCryptoMarketChart';
 
 interface MarketTabProps {
   language: 'en' | 'bn' | 'bilingual';
@@ -238,21 +239,10 @@ export default function MarketTab({ language }: MarketTabProps) {
     }
   }, [selectedCoin]);
 
-  const getTxt = (en: string, bn: string) => {
-    if (language === 'en') return en;
-    if (language === 'bn') return bn;
-    return `${bn} (${en})`;
-  };
+  const getTxt = (en: string, _bn?: string) => en;
 
-  const getBilingualDesc = (en: string, bn: string) => {
-    if (language === 'en') return <p className="text-slate-200 text-xs md:text-sm leading-relaxed">{en}</p>;
-    if (language === 'bn') return <p className="text-blue-100 text-xs md:text-sm leading-relaxed">{bn}</p>;
-    return (
-      <div className="space-y-1.5">
-        <p className="text-blue-100 text-xs md:text-sm leading-relaxed">{bn}</p>
-        <p className="text-slate-400 text-[11px] leading-relaxed border-l border-cyan-500/30 pl-2 italic">{en}</p>
-      </div>
-    );
+  const getBilingualDesc = (en: string, _bn?: string) => {
+    return <p className="text-slate-200 text-xs md:text-sm leading-relaxed">{en}</p>;
   };
 
   // Technical Indicators descriptions
@@ -302,12 +292,15 @@ export default function MarketTab({ language }: MarketTabProps) {
           </h2>
           <p className="text-xs md:text-sm text-blue-200 max-w-3xl leading-relaxed">
             {getTxt(
-              'A complete guide focused on spot vs futures mechanisms, crucial indicators, and dynamic risk management calculators. Use these tools to protect your capital from high-leveraged liquidation traps.',
-              'ক্রিপ্টো মার্কেট বিশ্লেষণ, স্পট বনাম ফিউচারস ট্রেডিংয়ের ঝুঁকি, ইন্ডিকেটর ব্যবহারের গাইডবুক এবং পজিশন সাইজিং ক্যালকুলেটর। লোভ পরিহার করে ঠান্ডা মাথায় ঝুঁকি কন্ট্রোল করা শিখুন।'
+              'Real-time live crypto price action, interactive technical charts, wallet swap/send utilities, and risk calculators. Stay informed with live Binance & CoinGecko WebSocket data streams.',
+              'রিয়েল-টাইম লাইভ ক্রিপ্টো চার্ট, ইন্টারঅ্যাকটিভ টাইম-ফ্রেম, সোয়াপ ডেক্স ইউটিলিটি ও রিভার্সাল ক্যালকুলেটর। বিনান্স ও কয়েনগেকো লাইভ এপিআই দিয়ে বাজার মূল্য পর্যবেক্ষণ করুন।'
             )}
           </p>
         </div>
       </div>
+
+      {/* FEATURED REAL-TIME CRYPTO MARKET PRICE CHART SECTION (Bitcoin.com Wallet Style) */}
+      <LiveCryptoMarketChart language={language} />
 
       {/* Spot vs Futures diagrammatic interactive grid banner */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

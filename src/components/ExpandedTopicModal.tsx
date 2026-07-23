@@ -261,11 +261,9 @@ export default function ExpandedTopicModal({ topic, onClose, language, inlineMod
     }
   ];
 
-  // Dynamic label helpers based on selected language
-  const getLabel = (enVal: string, bnVal: string) => {
-    if (language === 'en') return enVal;
-    if (language === 'bn') return bnVal;
-    return `${enVal} / ${bnVal}`;
+  // Dynamic label helpers returning English
+  const getLabel = (enVal: string, _bnVal?: string) => {
+    return enVal;
   };
 
   const contentBody = (
@@ -279,14 +277,7 @@ export default function ExpandedTopicModal({ topic, onClose, language, inlineMod
               {topic.category}
             </span>
             <h2 className="text-lg md:text-2xl font-black text-neutral-900 tracking-tight leading-snug">
-              {language === 'en' && topic.titleEn}
-              {language === 'bn' && topic.titleBn}
-              {language === 'bilingual' && (
-                <>
-                  <span className="block text-neutral-900 text-base md:text-xl font-black">{topic.titleEn}</span>
-                  <span className="block text-rose-650 text-xs md:text-sm font-bold mt-1.5">{topic.titleBn}</span>
-                </>
-              )}
+              {topic.titleEn}
             </h2>
           </div>
           <button 
@@ -329,20 +320,7 @@ export default function ExpandedTopicModal({ topic, onClose, language, inlineMod
             <div className="space-y-6">
               {topic.paragraphs.map((p, idx) => (
                 <div key={idx} className="border-b border-rose-100/60 pb-5 last:border-b-0 last:pb-0">
-                  {language === 'en' && (
-                    <p className="text-neutral-700 font-normal leading-relaxed">{p.en}</p>
-                  )}
-                  {language === 'bn' && (
-                    <p className="text-neutral-700 font-normal leading-relaxed">{p.bn}</p>
-                  )}
-                  {language === 'bilingual' && (
-                    <div className="space-y-2">
-                      <p className="text-neutral-850 font-normal leading-relaxed">{p.en}</p>
-                      <p className="text-rose-800 text-sm italic font-semibold leading-relaxed border-l-2 border-rose-350 pl-4 bg-rose-500/5 py-2.5 rounded-r">
-                        {p.bn}
-                      </p>
-                    </div>
-                  )}
+                  <p className="text-neutral-700 font-normal leading-relaxed">{p.en}</p>
                 </div>
               ))}
 
@@ -432,14 +410,7 @@ export default function ExpandedTopicModal({ topic, onClose, language, inlineMod
                         <strong className="text-rose-700 text-xs block mb-1 uppercase font-black tracking-wider">
                           {getLabel('Detailed Utility / কাজের ক্ষেত্র:', 'বিস্তারিত কাজের ক্ষেত্র:')}
                         </strong>
-                        {language === 'en' && <p>{selectedCoin.useCaseEn}</p>}
-                        {language === 'bn' && <p>{selectedCoin.useCaseBn}</p>}
-                        {language === 'bilingual' && (
-                          <div className="space-y-1">
-                            <p className="text-neutral-800 text-xs">{selectedCoin.useCaseEn}</p>
-                            <p className="text-rose-700 text-xs italic font-semibold border-l border-rose-300 pl-2 mt-1">{selectedCoin.useCaseBn}</p>
-                          </div>
-                        )}
+                        <p>{selectedCoin.useCaseEn}</p>
                       </div>
                     </div>
                   )}
@@ -586,14 +557,7 @@ export default function ExpandedTopicModal({ topic, onClose, language, inlineMod
                           {scamAnswers[q.id] && <Check size={12} className="stroke-[3]" />}
                         </div>
                         <div className="select-none text-xs md:text-sm font-semibold">
-                          {language === 'en' && <p className="text-neutral-800">{q.en}</p>}
-                          {language === 'bn' && <p className="text-neutral-800">{q.bn}</p>}
-                          {language === 'bilingual' && (
-                            <>
-                              <p className="text-neutral-850 font-bold">{q.en}</p>
-                              <p className="text-rose-750 text-xs italic font-semibold border-t border-rose-100 pt-1.5 mt-1.5">{q.bn}</p>
-                            </>
-                          )}
+                          <p className="text-neutral-800">{q.en}</p>
                         </div>
                       </div>
                     ))}
@@ -640,14 +604,7 @@ export default function ExpandedTopicModal({ topic, onClose, language, inlineMod
                         <div className="select-none text-xs md:text-sm font-semibold space-y-1">
                           <h5 className="font-extrabold text-neutral-900">{getLabel(step.titleEn, step.titleBn)}</h5>
                           <p className="text-neutral-550 text-xs md:text-sm font-medium">
-                            {language === 'en' && step.textEn}
-                            {language === 'bn' && step.textBn}
-                            {language === 'bilingual' && (
-                              <>
-                                <span className="block text-neutral-600 font-medium">{step.textEn}</span>
-                                <span className="block text-rose-700 italic border-t border-rose-100/50 pt-1 mt-1 font-semibold">{step.textBn}</span>
-                              </>
-                            )}
+                            {step.textEn}
                           </p>
                         </div>
                       </div>
@@ -708,14 +665,7 @@ export default function ExpandedTopicModal({ topic, onClose, language, inlineMod
                           {getLabel(p.titleEn, p.titleBn)}
                         </h5>
                         <p className="text-[11px] text-neutral-600 leading-relaxed font-medium">
-                          {language === 'en' && p.descriptionEn}
-                          {language === 'bn' && p.descriptionBn}
-                          {language === 'bilingual' && (
-                            <>
-                              <span className="block text-neutral-800 mb-1 font-normal">{p.descriptionEn}</span>
-                              <span className="block text-rose-700 font-bold italic border-t border-rose-100/60 pt-1 mt-1">{p.descriptionBn}</span>
-                            </>
-                          )}
+                          {p.descriptionEn}
                         </p>
                       </div>
                     ))}

@@ -1,510 +1,457 @@
-import { useState } from 'react';
-import { Users, HelpCircle, Award, Send, CheckCircle2, XCircle, ChevronDown, ChevronUp, Trophy, RefreshCw } from 'lucide-react';
+import React from 'react';
+import { 
+  Users, 
+  ShieldCheck, 
+  Sparkles, 
+  ExternalLink, 
+  Send, 
+  Twitter, 
+  Award, 
+  Heart, 
+  Coins, 
+  Globe, 
+  Smartphone, 
+  Download, 
+  Cpu, 
+  Layers, 
+  Lock, 
+  TrendingUp, 
+  CheckCircle2, 
+  Star, 
+  MessageSquare,
+  Compass
+} from 'lucide-react';
 
 interface CommunityTabProps {
   language: 'en' | 'bn' | 'bilingual';
 }
 
-interface QuizQuestion {
-  qEn: string;
-  qBn: string;
-  optionsEn: string[];
-  optionsBn: string[];
-  correctAnsIdx: number;
-  explanationEn: string;
-  explanationBn: string;
-}
-
-export default function CommunityTab({ language }: CommunityTabProps) {
-  const [selectedFaq, setSelectedFaq] = useState<number | null>(null);
-  
-  // Interactive Quiz Engine State
-  const [quizIdx, setQuizIdx] = useState<number>(0);
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
-  const [quizFinished, setQuizFinished] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
-
-  // Airdrop checker simulation
-  const [addressInput, setAddressInput] = useState<string>('');
-  const [isEligible, setIsEligible] = useState<'idle' | 'checking' | 'eligible' | 'notEligible'>('idle');
-
-  const getTxt = (en: string, bn: string) => {
-    if (language === 'en') return en;
-    if (language === 'bn') return bn;
-    return `${bn} (${en})`;
-  };
-
-  const getBilingualDesc = (en: string, bn: string) => {
-    if (language === 'en') return <p className="text-slate-200 text-xs md:text-sm leading-relaxed">{en}</p>;
-    if (language === 'bn') return <p className="text-blue-100 text-xs md:text-sm leading-relaxed">{bn}</p>;
-    return (
-      <div className="space-y-1.5">
-        <p className="text-blue-105 text-xs md:text-sm leading-relaxed">{bn}</p>
-        <p className="text-slate-400 text-[11px] leading-relaxed border-l border-cyan-500/25 pl-2.5 italic">{en}</p>
-      </div>
-    );
-  };
-
-  // 4 high-quality educational security questions
-  const quizQuestions: QuizQuestion[] = [
-    {
-      qEn: 'If a Telegram channel admin messages you offering a guaranteed 3% daily return on USDT, what is it?',
-      qBn: 'যদি কোনো টেলিগ্রাম চ্যানেল অ্যাডমিন আপনাকে এসএমএস করে প্রতিদিন ৩% নিশ্চিত প্রফিট দেওয়ার দাবি করে, তবে সেটি আসলে কী?',
-      optionsEn: [
-        'A revolutionary algorithmic decentralization program',
-        'A standard high-yield professional investing firm',
-        'A 100% dangerous Ponzi / MLM fraudulent scam',
-        'An official Binance partnership project'
-      ],
-      optionsBn: [
-        'একটি বৈপ্লবিক সয়ংক্রিয় ব্লকচেইন মাইনিং প্রোটোকল',
-        'পেশাদার বিশ্বস্ত দীর্ঘমেয়াদী ইনভেস্ট কোম্পানি',
-        'শতভাগ বিপজ্জনক পঞ্জি (MLM) এবং প্রতারণার ফাঁদ',
-        'বাইন্যান্সের অফিসিয়াল পার্টনারশিপ পার্টনার'
-      ],
-      correctAnsIdx: 2,
-      explanationEn: 'Legitimate crypto protocols never guarantee daily linear returns. This is a classic Ponzi exit trap common on chat networks. Never send your dollars!',
-      explanationBn: 'আসল ক্রিপ্টো মার্কেট কখনোই প্রতিদিন নির্দিষ্ট ফিক্সড লাভ দেওয়ার গ্যারান্টি দেয় না। এটি একটি বিশুদ্ধ ক্যারেক্টার পঞ্জি বা টাকা মেরে পালানোর ফাঁদ। ভুলেও ডলার পাঠাবেন না!'
-    },
-    {
-      qEn: 'Where is the absolutely safest place to preserve your 12-word seed recovery phrase?',
-      qBn: 'আপনার ওয়ালেটের ১২ শব্দের গোপন পুনরুদ্ধার সিক্রেট কি লিখে রাখার সবচেয়ে নিরাপদ স্থান কোনটি?',
-      optionsEn: [
-        'In your private draft on Telegram or Discord',
-        'Stored as a screenshot inside your email or Google Drive',
-        'Written on an offline physical paper, laminated and stored securely',
-        'Saved inside a text file on your laptop desktop'
-      ],
-      optionsBn: [
-        'টেলিগ্রাম বা ডিসকর্ডের সেভড মেসেজে ড্রাফট করে রাখা',
-        'মোবাইলে স্ক্রিনশট নিয়ে গুগল ড্রাইভে বা মেইলে রাখা',
-        'অফলাইনে খাতায় কলমে লিখে লেমিনেটিং করে ব্যক্তিগত গোপন বক্সে সেভ রাখা',
-        'ল্যাপটপের ডেক্সটপে একটি সাধারণ টেক্সট ফাইলে লিখে রাখা'
-      ],
-      correctAnsIdx: 2,
-      explanationEn: 'Cloud storages, screenshots, and drives are vulnerable to keylogging malware hacks. Offline physical laminated paper ensures zero contact with cyber hackers.',
-      explanationBn: 'যেকোনো অনলাইন ড্রাইভ, ল্যাপটপ ফাইল বা স্ক্রিনশট সহজেই ম্যালওয়্যার দিয়ে হ্যাক করা যায়। অফলাইনে কাগজে লিখে ঠান্ডা মাথায় সেভ করার কোনো বিকল্প নেই!'
-    },
-    {
-      qEn: 'When trading on P2P marketplaces like Binance, what should you do if the buyer sends a custom SMS notification saying "Payment Complete" but your bank app shows zero balance?',
-      qBn: 'পি২পি ট্রেডে বায়ার যদি আপনাকে ম্যাসেজ পাঠিয়ে বলে "পেমেন্ট কমপ্লিট" কিন্তু আপনার আসল বিকাশ বা রকেট অ্যাপে কোনো টাকা না এড হয়, তবে আপনি কী করবেন?',
-      optionsEn: [
-        'Release the crypto assets instantly to prevent dispute limits',
-        'Refuse release, trust your bank app ledger exclusively, and appeal to admin check',
-        'Wait 5 minutes and then click release without checking bank balance',
-        'Share your password with the buyer'
-      ],
-      optionsBn: [
-        'দ্রুত ক্রিপ্টো রিলিজ করে দেওয়া উচিত যাতে বায়ার কষ্ট না পায়',
-        'কখনোই ক্রিপ্টো রিলিজ করবেন না, নিজের ব্যাংক হিস্ট্রিকে বিশ্বাস করুন এবং বাইন্যান্স আপিল করুন',
-        '৫ মিনিট অপেক্ষা করে চেক না করেই রিলিজ বাটনে চাপ দেওয়া',
-        'ক্রেতাকে আপনার বিকাশ পাসওয়ার্ড শেয়ার করা'
-      ],
-      correctAnsIdx: 1,
-      explanationEn: 'Scammers frequently send fake sender bulk SMS messages mimicking banks. Always verify actual physical mobile ledger balances yourself inside your app.',
-      explanationBn: 'প্রতারকেরা সচরাচর জিপি বা রবির ভুয়া বাল্ক এসএমএস সার্ভার হ্যাক দিয়ে আপনাকে ব্যাংক থেকে মেসেজ পাঠাতে পারে। নিজের ওয়ালেট স্টেটমেন্টে টাকা না জমা হওয়া পর্যন্ত রিলিজ বাটনে চাপ দেওয়া আত্মহত্যাসম!'
-    }
-  ];
-
-  const currentQ = quizQuestions[quizIdx];
-
-  const handleOptionClick = (idx: number) => {
-    if (selectedOption !== null) return; // already answered
-    setSelectedOption(idx);
-    if (idx === currentQ.correctAnsIdx) {
-      setScore(score + 1);
-    }
-  };
-
-  const handleNextQuiz = () => {
-    setSelectedOption(null);
-    if (quizIdx < quizQuestions.length - 1) {
-      setQuizIdx(quizIdx + 1);
-    } else {
-      setQuizFinished(true);
-    }
-  };
-
-  const resetQuiz = () => {
-    setQuizIdx(0);
-    setSelectedOption(null);
-    setQuizFinished(false);
-    setScore(0);
-  };
-
-  // Simulated eligible eligibility criteria for custom mockup airdrops
-  const checkAirdropEligibility = () => {
-    if (!addressInput.trim()) return;
-    setIsEligible('checking');
-    setTimeout(() => {
-      // simulate checking by mock address hash
-      if (addressInput.toLowerCase().startsWith('0x') && addressInput.length >= 35) {
-        setIsEligible('eligible');
-      } else {
-        setIsEligible('notEligible');
-      }
-    }, 1500);
-  };
-
-  const banglaFaqs = [
-    {
-      q: 'বাংলাদেশ থেকে নতুন ফ্রিল্যান্সাররা কীভাবে নিরাপদে ক্রিপ্টো জ্ঞান অর্জন করতে পারে?',
-      enQ: 'How can young freelancers in Bangladesh safely acquire cryptographic awareness?',
-      a: 'তরুণদের প্রথম পরামর্শ হলো কোনো লোভনীয় ট্রেডিং টেলিগ্রাম সংকেতে পা না দিয়ে ব্লকচেইন মেকানিজম শেখা। আপনার ওয়ালেট সুরক্ষায় নন-কাস্টোডিয়াল প্রোটোকল শিখুন এবং লোকাল স্প্যাম সাইট চিনে ডিঙিয়ে চলুন।'
-    },
-    {
-      q: 'এয়ারড্রপ হান্টিং বা ফ্রি ক্লেইম কুইজের নামে কীভাবে প্রতারণা প্রতিরোধ করব?',
-      enQ: 'How do I prevent scams masking as free airdrops or easy quizzes?',
-      a: 'প্রতারক সাইটগুলোতে ক্লেইম বোনাস লিখে মেটামাস্ক এড্রেস কানেক্ট ও অল পারমিশন সাইন করতে বলে। পারমিশন দেওয়া মানেই আপনার ব্যালেন্স শূন্য হওয়া। যেকোনো অপরিচিত সাইটে মেটামাস্ক কানেক্ট করার পূর্বে বার্নার ওয়ালেট ব্যবহার করুন।'
-    },
-    {
-      q: 'ভার্স প্রজেক্টের সাথে যুক্ত থাকার সুফল কী?',
-      enQ: 'What are the core educational benefits of participating in Verse Community?',
-      a: 'ভার্স কমিউনিটি মূলত বাংলাদেশি যুবকদের ক্রিপ্টোগ্রাফি ও ওয়েব৩ সিকিউরিটি ফ্রন্ট লাইনে শতভাগ ফ্রিতে সাহায্য করে। এটি সঠিক ও নিরাপদ নলেজ শেয়ারের একটি স্বাধীন পাবলিক ফোরাম।'
-    }
-  ];
+export default function CommunityTab({ language: _language }: CommunityTabProps) {
+  const OFFICIAL_WALLET_LINK = "https://branch.wallet.bitcoin.com/1xMoZ7gYhMb";
+  const LEADER_TELEGRAM_LINK = "https://t.me/stone_brb";
 
   return (
-    <div className="space-y-12 animate-fade-in" id="community-view">
+    <div className="space-y-10 pb-16 animate-fade-in text-slate-100">
       
-      {/* Community Welcoming Title */}
-      <div className="bg-[#0e1633] border border-blue-500/20 p-6 md:p-8 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 rounded-full text-cyan-300 font-bold uppercase tracking-widest text-[9.5px] border border-cyan-500/20 shadow-sm">
-            <Users size={13} className="text-cyan-400" />
-            <span>{getTxt('National Security Initiative', 'বাংলাদেশী ক্রিপ্টো সচেতনতা ফোরাম')}</span>
-          </div>
-          <h2 className="text-2xl md:text-4xl font-black text-white uppercase italic tracking-tight">
-            🇧🇩 {getTxt('Bangladesh Crypto Community Portal', 'বাংলাদেশ ক্রিপ্টোকারেন্সি কম্যুনিটি')}
-          </h2>
-          <p className="text-xs md:text-sm text-blue-250 max-w-3xl leading-relaxed">
-            {getTxt(
-              'A dedicated academic segment tailored to Bengali language education. Interact with our security quiz modules, practice checking airdrop addresses, and expand your non-custodial literacy.',
-              'বাংলাদেশের ক্রিপ্টোকারেন্সি ও ব্লকচেইন শিক্ষানবিসদের জন্য নির্মিত বিশেষ বিভাগ। এখানে সম্পূর্ণ বাংলায় ক্রিপ্টো প্রশ্নোত্তর, কুইজ প্রতিযোগিতা, শিক্ষা এয়ারড্রপ ট্র্যাকার এবং গাইডবুক ফ্রিতে রাখা হয়েছে।'
-            )}
-          </p>
-        </div>
-      </div>
+      {/* 1. HERO HEADER & VERSE LOGO SECTION */}
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#121c44] via-[#0f1738] to-[#0a1027] border-2 border-cyan-500/30 p-6 md:p-10 shadow-2xl">
+        <div className="absolute top-0 right-0 -mt-10 -mr-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Main Interactive Quiz Card Section */}
-      <div className="bg-[#0a112a] border-2 border-[#818cf8]/20 p-6 md:p-8 rounded-3xl shadow-xl flex flex-col lg:flex-row gap-8 items-center justify-between">
-        <div className="space-y-4 max-w-xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#818cf8]/10 rounded-full text-indigo-300 font-bold uppercase text-[9.5px] border border-[#818cf8]/25 shadow-sm">
-            <Trophy size={12} className="text-indigo-400" />
-            <span>{getTxt('Interactive Awareness Contest', 'শিক্ষা ক্যুইজ এবং বুদ্ধিমত্তা টেস্ট')}</span>
-          </div>
-          <h3 className="text-xl md:text-2xl font-black text-white uppercase italic tracking-tight">
-            🧠 {getTxt('Anti-Scam Intelligence Quiz', 'স্ক্যাম প্রতিরোধ চ্যাম্পিয়নশিপ')}
-          </h3>
-          <p className="text-xs md:text-sm text-blue-200">
-            {getTxt(
-              'Test your cybersecurity knowledge regarding P2P banking checkouts and seed protection guidelines. Clear all stages with active scores!',
-              'ক্রিপ্টোগ্রাফির সুরম্য অডিট ও পি২পি হ্যাক থেকে বাঁচার বাস্তবিক পরীক্ষা। ৩টি কঠিন প্রশ্নের সঠিক উত্তর দিয়ে নিজের আত্মরক্ষা মডিউল ঝালাই করে নিন।'
-            )}
-          </p>
-          <div className="flex items-center gap-3 bg-blue-950/60 p-4.5 rounded-xl border border-blue-500/10 text-xs">
-            <span className="text-indigo-300 font-black">Score Tracker:</span>
-            <span className="font-mono text-white font-bold bg-indigo-500/15 px-2.5 py-1 rounded border border-indigo-500/25">
-              {score} / {quizQuestions.length}
-            </span>
-          </div>
-        </div>
-
-        {/* Selected Active Quiz Box */}
-        <div className="w-full lg:w-[500px] bg-[#0c1334] p-6 rounded-2xl border border-blue-500/20 space-y-4 shadow-inner relative overflow-hidden">
-          
-          {!quizFinished ? (
-            <div className="space-y-4">
-              <div className="flex justify-between items-center text-[10.5px] font-mono text-cyan-405 font-bold uppercase pb-2 border-b border-blue-500/10">
-                <span>STAGE #{String(quizIdx + 1).padStart(2, '0')}</span>
-                <span>Active Game</span>
-              </div>
-              
-              <h4 className="text-xs md:text-sm font-bold text-white leading-relaxed">
-                {language === 'en' ? currentQ.qEn : currentQ.qBn}
-              </h4>
-
-              <div className="space-y-2">
-                {(language === 'en' ? currentQ.optionsEn : currentQ.optionsBn).map((opt, oIdx) => {
-                  const isChosen = selectedOption === oIdx;
-                  const isCorrectAnswer = oIdx === currentQ.correctAnsIdx;
-                  
-                  let optionStyle = 'bg-[#11193a]/80 border-blue-500/15 text-blue-200 hover:text-white hover:border-blue-500/30';
-                  if (selectedOption !== null) {
-                    if (isCorrectAnswer) {
-                      optionStyle = 'bg-emerald-500/10 border-emerald-500 text-emerald-400 font-bold';
-                    } else if (isChosen) {
-                      optionStyle = 'bg-rose-500/10 border-rose-500 text-rose-455 font-bold';
-                    } else {
-                      optionStyle = 'bg-[#11193a]/30 border-blue-500/5 text-blue-200/50 cursor-not-allowed';
-                    }
-                  }
-
-                  return (
-                    <button
-                      key={oIdx}
-                      onClick={() => handleOptionClick(oIdx)}
-                      disabled={selectedOption !== null}
-                      className={`w-full text-left p-3 rounded-xl border text-xs leading-relaxed transition-all flex items-center justify-between cursor-pointer ${optionStyle}`}
-                    >
-                      <span>{opt}</span>
-                      {selectedOption !== null && isCorrectAnswer && <CheckCircle2 size={13} className="text-emerald-400 shrink-0 ml-2" />}
-                      {selectedOption !== null && isChosen && !isCorrectAnswer && <XCircle size={13} className="text-rose-400 shrink-0 ml-2" />}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Quiz explanation reveals here */}
-              {selectedOption !== null && (
-                <div className="bg-indigo-500/5 p-4 rounded-xl border border-[#818cf8]/20 animate-fade-in space-y-1">
-                  <span className="text-[10px] font-black uppercase text-indigo-300 block">Explanation & Security Takeaway</span>
-                  <p className="text-[11.5px] leading-relaxed text-slate-200">
-                    {language === 'en' ? currentQ.explanationEn : currentQ.explanationBn}
-                  </p>
-                  <button
-                    onClick={handleNextQuiz}
-                    className="mt-3 w-full bg-gradient-to-r from-blue-600 to-indigo-500 text-white font-black uppercase text-[10px] p-2.5 rounded-lg border border-indigo-400 cursor-pointer shadow hover:brightness-110 tracking-widest"
-                  >
-                    {quizIdx < quizQuestions.length - 1 ? getTxt('Next Question', 'পরবর্তী প্রশ্ন') : getTxt('Finish & Score Result', 'ক্যুইজ সমাপ্ত করুন')}
-                  </button>
-                </div>
-              )}
+        <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+          {/* Verse Logo Display */}
+          <div className="relative shrink-0 group">
+            <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 rounded-full blur-md opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse" />
+            <div className="relative w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-cyan-400/80 bg-slate-950 shadow-2xl p-1 flex items-center justify-center">
+              <img 
+                src="/verse_logo.jpg" 
+                alt="Verse Logo" 
+                className="w-full h-full object-cover rounded-full transform group-hover:scale-105 transition duration-500"
+              />
             </div>
-          ) : (
-            <div className="text-center py-6 space-y-4">
-              <Trophy size={48} className="mx-auto text-yellow-400 animate-bounce" />
-              <h4 className="text-lg font-black text-white uppercase italic">{getTxt('Quiz Completed!', 'ক্যুইজ সম্পূর্ণ হয়েছে!')}</h4>
-              <p className="text-xs text-blue-250">
-                {getTxt(
-                  `You scored exactly ${score} out of ${quizQuestions.length} security points. Highly strategic and well done!`,
-                  `আপনি ৩টির মাঝে মোট ${score}টি প্রশ্নের সঠিক উত্তর দিয়ে অত্যন্ত বিচক্ষণ পরিচয় প্রকাশ করেছেন!`
-                )}
-              </p>
-              <button
-                onClick={resetQuiz}
-                className="px-6 py-2 bg-[#12214a] border border-blue-500/20 hover:border-cyan-400 text-cyan-300 font-black uppercase text-xs rounded-xl cursor-pointer transition-colors"
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-cyan-500 text-slate-950 font-black text-[10px] tracking-wider uppercase px-3 py-0.5 rounded-full shadow-lg border border-white/20 whitespace-nowrap">
+              Official Verse
+            </div>
+          </div>
+
+          {/* Hero Content */}
+          <div className="space-y-4 flex-1">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-cyan-950/80 border border-cyan-500/40 rounded-full text-cyan-300 font-bold text-xs uppercase tracking-widest shadow-md">
+              <Sparkles size={14} className="text-cyan-400" />
+              <span>Official Ecosystem Hub</span>
+            </div>
+
+            <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight uppercase italic leading-tight">
+              Welcome to <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-300 drop-shadow-[0_2px_10px_rgba(34,211,238,0.3)]">
+                Our Verse Community
+              </span>
+            </h1>
+
+            <p className="text-slate-200 text-sm md:text-base leading-relaxed max-w-2xl font-medium">
+              A vibrant, collaborative, and rapidly growing network dedicated to decentralization, non-custodial financial literacy, and the Verse ecosystem.
+            </p>
+
+            {/* Quick Action Community Links */}
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
+              <a 
+                href={LEADER_TELEGRAM_LINK}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-cyan-500/20 hover:scale-105"
               >
-                {getTxt('Retry Quiz Challenge', 'খেলুন আবারো টেস্ট')}
-              </button>
+                <Send size={15} />
+                <span>Join Telegram Community</span>
+              </a>
+
+              <a 
+                href="https://x.com/BitcoinCom" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#131d45] hover:bg-blue-900/50 border border-blue-500/30 text-cyan-300 font-bold text-xs uppercase tracking-wider transition-all hover:text-white"
+              >
+                <Twitter size={15} />
+                <span>Verse X (Twitter)</span>
+              </a>
             </div>
-          )}
-
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Airdrop Checker simulated sandbox segment */}
-      <div className="bg-[#0b122f] border border-blue-500/20 p-6 md:p-8 rounded-3xl shadow-xl space-y-6">
-        <div className="flex items-center gap-3.5">
-          <div className="p-2.5 bg-cyan-500/10 rounded-xl border border-cyan-500/25">
-            <Award className="text-cyan-400" size={22} />
+      {/* 2. COMMUNITY INTRODUCTION SECTION */}
+      <section className="bg-[#0e1635]/90 border border-blue-500/20 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl backdrop-blur-md">
+        <div className="flex items-center gap-3 border-b border-blue-500/20 pb-4">
+          <div className="p-2.5 bg-cyan-500/10 text-cyan-400 rounded-2xl border border-cyan-500/20">
+            <Users size={24} />
           </div>
           <div>
-            <h3 className="text-lg md:text-xl font-black text-white uppercase italic tracking-tight">
-              🪂 {getTxt('Educational Simulated Testnet Airdrop Claims', 'শিক্ষামূলক টেস্টনেট এয়ারড্রপ যোগ্যতা যাচাই')}
-            </h3>
-            <p className="text-xs text-blue-200">
-              {getTxt('Check custom Web3 mockup address parameters safely to practice airdrop claim checkups.', 'আপনার টেস্ট মেটামাস্ক এড্রেস বসিয়ে ডেমো ক্লেইম অডিট প্রাক্টিস করুন শতভাগ সুরক্ষিত উপায়ে।')}
+            <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight font-mono">
+              About Our Community
+            </h2>
+            <p className="text-xs text-slate-400 font-medium">Strength through collaboration, education, and shared vision</p>
+          </div>
+        </div>
+
+        <div className="text-slate-200 text-sm md:text-base leading-relaxed space-y-4">
+          <p>
+            <strong>Our Verse Community</strong> is built upon the foundation of mutual respect, peer-to-peer collaboration, and proactive support. Whether you are taking your first steps into non-custodial crypto storage or navigating advanced DeFi liquidity pools, our community offers a friendly, welcoming, and safe environment for everyone.
+          </p>
+          <p>
+            With active members sharing daily insights, security reminders, and ecosystem updates, we work together to ensure everyone learns safely. As the decentralized Web3 movement grows, Our Verse Community continues to expand, fostering a bright and impactful future for all members.
+          </p>
+        </div>
+
+        {/* 3 Core Pillars Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div className="bg-[#121c44] border border-blue-500/20 p-5 rounded-2xl space-y-2 hover:border-cyan-400/50 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold">
+              <Heart size={20} />
+            </div>
+            <h3 className="text-white font-bold text-sm uppercase tracking-wide">Friendly & Inclusive</h3>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              A respectful, supportive space where questions are welcomed and every member is treated with value.
+            </p>
+          </div>
+
+          <div className="bg-[#121c44] border border-blue-500/20 p-5 rounded-2xl space-y-2 hover:border-cyan-400/50 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+              <ShieldCheck size={20} />
+            </div>
+            <h3 className="text-white font-bold text-sm uppercase tracking-wide">Mutual Cooperation</h3>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              Members proactively help each other avoid scams, verify official contracts, and master Web3 security.
+            </p>
+          </div>
+
+          <div className="bg-[#121c44] border border-blue-500/20 p-5 rounded-2xl space-y-2 hover:border-cyan-400/50 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">
+              <TrendingUp size={20} />
+            </div>
+            <h3 className="text-white font-bold text-sm uppercase tracking-wide">Expanding Future</h3>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              Driven by collective energy and continuous learning, paving the way for long-term growth and adoption.
             </p>
           </div>
         </div>
+      </section>
 
-        <div className="bg-[#0f1737] p-5 rounded-2xl border border-blue-500/10 max-w-xl space-y-4">
-          <div className="space-y-1.5">
-            <label className="block text-xs font-black uppercase text-cyan-400 font-mono tracking-wider">
-              {getTxt('Input Mock MetaMask Address (ERC-20/EVM)', 'আপনার মেটামাস্ক এড্রেস (ডেমো অডিটে পেস্ট করুন)')}
-            </label>
-            <div className="flex gap-2">
-              <input 
-                type="text" 
-                value={addressInput}
-                onChange={(e) => setAddressInput(e.target.value)}
-                placeholder="e.g. 0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
-                className="flex-1 bg-[#11193a] border-2 border-slate-500/25 rounded-xl p-2.5 text-xs text-white font-mono placeholder:text-blue-300/20"
-              />
-              <button
-                onClick={checkAirdropEligibility}
-                className="bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-black uppercase text-xs px-5 rounded-xl transition-all cursor-pointer shadow"
-              >
-                {getTxt('Check', 'যাচাই')}
-              </button>
+      {/* 3. COMMUNITY LEADER SECTION */}
+      <section className="bg-gradient-to-r from-[#0d163a] via-[#101b46] to-[#0d163a] border-2 border-cyan-400/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-b border-blue-500/20 pb-6">
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 p-0.5 shadow-lg">
+                <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-cyan-400">
+                  <Star size={30} className="fill-cyan-400/20 text-cyan-400" />
+                </div>
+              </div>
+              <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
+              </span>
+            </div>
+
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-cyan-950 border border-cyan-500/30 rounded-md text-cyan-400 font-mono text-[11px] font-bold uppercase mb-1">
+                <Award size={12} />
+                <span>Community Leader</span>
+              </div>
+              <h2 className="text-2xl font-black text-white uppercase tracking-tight">
+                @stone_brb
+              </h2>
+              <p className="text-xs text-slate-400 font-mono">Telegram: @stone_brb</p>
             </div>
           </div>
 
-          {/* Checks responses */}
-          {isEligible === 'checking' && (
-            <div className="flex items-center gap-2 text-xs text-blue-300 animate-pulse">
-              <RefreshCw size={13} className="animate-spin text-cyan-400" />
-              <span>Checking block records on decentralization registry...</span>
+          <a 
+            href={LEADER_TELEGRAM_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-lg shadow-cyan-500/20 flex items-center gap-2 shrink-0 font-mono"
+          >
+            <Send size={14} />
+            <span>Contact Leader on Telegram</span>
+            <ExternalLink size={12} />
+          </a>
+        </div>
+
+        <div className="text-slate-200 text-sm leading-relaxed space-y-3">
+          <p>
+            Through dedicated leadership, sincere effort, and consistent guidance, <strong>@stone_brb</strong> has played a key role in bringing Verse Community members together. By fostering an encouraging environment, addressing member inquiries, and promoting safe non-custodial practices, their leadership continues to guide our community forward with confidence.
+          </p>
+          <p className="text-slate-300 text-xs italic bg-blue-950/40 p-4 rounded-xl border border-blue-500/15">
+            "With active coordination, shared responsibility, and dedicated community leadership, Our Verse Community is well-positioned for strong, sustainable growth."
+          </p>
+        </div>
+      </section>
+
+      {/* 4. COMMUNITY TEAM & MODERATORS SECTION */}
+      <section className="bg-[#0e1635]/90 border border-blue-500/20 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+        <div className="flex items-center gap-3 border-b border-blue-500/20 pb-4">
+          <div className="p-2.5 bg-indigo-500/10 text-indigo-400 rounded-2xl border border-indigo-500/20">
+            <Award size={24} />
+          </div>
+          <div>
+            <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight font-mono">
+              Verse Community Team & Moderators
+            </h2>
+            <p className="text-xs text-slate-400 font-medium">Honoring the dedicated efforts of our core team</p>
+          </div>
+        </div>
+
+        <p className="text-slate-200 text-sm leading-relaxed">
+          We extend our heartfelt appreciation to all our responsible team members and moderators. Their continuous dedication, daily diligence, and proactive coordination keep our channel clean, helpful, and safe for every member.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-2">
+          <div className="bg-[#121c44] border border-blue-500/20 p-4 rounded-2xl space-y-2">
+            <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider font-mono">
+              <ShieldCheck size={16} />
+              <span>Moderation & Safety</span>
             </div>
-          )}
+            <p className="text-slate-300 text-xs leading-relaxed">
+              Maintaining scam-free discussion rooms, verifying official links, and protecting members from phishing traps.
+            </p>
+          </div>
+
+          <div className="bg-[#121c44] border border-blue-500/20 p-4 rounded-2xl space-y-2">
+            <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider font-mono">
+              <MessageSquare size={16} />
+              <span>Member Support</span>
+            </div>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              Assisting new crypto users with non-custodial wallet setups, transaction queries, and Verse DEX navigation.
+            </p>
+          </div>
+
+          <div className="bg-[#121c44] border border-blue-500/20 p-4 rounded-2xl space-y-2">
+            <div className="flex items-center gap-2 text-indigo-400 font-bold text-xs uppercase tracking-wider font-mono">
+              <Compass size={16} />
+              <span>Community Growth</span>
+            </div>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              Organizing educational campaigns, updates, and collaborative initiatives to strengthen community ties.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. ABOUT VERSE SECTION */}
+      <section className="bg-[#0e1635]/90 border border-blue-500/20 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+        <div className="flex items-center gap-3 border-b border-blue-500/20 pb-4">
+          <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 p-1 border border-cyan-500/30 shrink-0 overflow-hidden">
+            <img src="/verse_logo.jpg" alt="Verse Logo" className="w-full h-full object-cover rounded-xl" />
+          </div>
+          <div>
+            <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight font-mono">
+              About Verse (VERSE Token)
+            </h2>
+            <p className="text-xs text-slate-400 font-medium">Rewards & Utility powering the Bitcoin.com Ecosystem</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="space-y-4 text-slate-200 text-sm leading-relaxed">
+            <p>
+              <strong>VERSE</strong> is an ERC-20 utility and rewards token created by <strong>Bitcoin.com</strong>. Launched in December 2022, VERSE is designed to incentivize user participation across the decentralized finance (DeFi) ecosystem.
+            </p>
+            <p>
+              By combining staking rewards, trading fee discounts, liquidity pool incentives, and governance features, VERSE bridges traditional crypto users into the world of self-custodial Web3 applications.
+            </p>
+            
+            <div className="p-4 rounded-2xl bg-[#121c44] border border-cyan-500/20 space-y-2">
+              <h4 className="text-xs font-bold text-cyan-300 uppercase tracking-wider font-mono">Key Verse Utility Highlights:</h4>
+              <ul className="text-xs text-slate-300 space-y-1.5">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-cyan-400 shrink-0" />
+                  <span>Staking yield rewards in liquidity pools</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-cyan-400 shrink-0" />
+                  <span>DEX trading fee discounts on Verse DEX</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-cyan-400 shrink-0" />
+                  <span>Gamified Scratch & Win rewards program</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-cyan-400 shrink-0" />
+                  <span>DAO governance participation and voting</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Verse Ecosystem Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="bg-[#121c44] p-4 rounded-2xl border border-blue-500/20 space-y-1">
+              <h4 className="text-white font-bold text-xs uppercase tracking-wide font-mono text-cyan-300">Verse DEX</h4>
+              <p className="text-slate-300 text-[11px] leading-relaxed">
+                A non-custodial decentralized exchange enabling seamless multi-chain token swaps with low fees.
+              </p>
+            </div>
+
+            <div className="bg-[#121c44] p-4 rounded-2xl border border-blue-500/20 space-y-1">
+              <h4 className="text-white font-bold text-xs uppercase tracking-wide font-mono text-cyan-300">Verse Staking</h4>
+              <p className="text-slate-300 text-[11px] leading-relaxed">
+                Deposit VERSE into staking pools to generate passive crypto yield in a secure non-custodial environment.
+              </p>
+            </div>
+
+            <div className="bg-[#121c44] p-4 rounded-2xl border border-blue-500/20 space-y-1">
+              <h4 className="text-white font-bold text-xs uppercase tracking-wide font-mono text-cyan-300">Verse Scratch & Win</h4>
+              <p className="text-slate-300 text-[11px] leading-relaxed">
+                An interactive rewards feature allowing users to scratch tickets and win token prizes instantly.
+              </p>
+            </div>
+
+            <div className="bg-[#121c44] p-4 rounded-2xl border border-blue-500/20 space-y-1">
+              <h4 className="text-white font-bold text-xs uppercase tracking-wide font-mono text-cyan-300">Verse Launchpad</h4>
+              <p className="text-slate-300 text-[11px] leading-relaxed">
+                Provides early access to vetted Web3 projects and token distribution initiatives within the ecosystem.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. ABOUT BITCOIN SECTION */}
+      <section className="bg-[#0e1635]/90 border border-blue-500/20 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+        <div className="flex items-center gap-3 border-b border-blue-500/20 pb-4">
+          <div className="p-2.5 bg-amber-500/10 text-amber-400 rounded-2xl border border-amber-500/20">
+            <Globe size={24} />
+          </div>
+          <div>
+            <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight font-mono">
+              About Bitcoin & Blockchain
+            </h2>
+            <p className="text-xs text-slate-400 font-medium">Foundational concepts of peer-to-peer digital sound money</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           
-          {isEligible === 'eligible' && (
-            <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-xs text-emerald-400 space-y-2">
-              <span className="font-black block uppercase tracking-wider">🎉 CONGRATULATIONS! ELIGIBLE</span>
-              <p>Your simulated address has been allocated exactly 500 VERSE Edu-Tokens! Redeem complete on simulated test nodes.</p>
+          <div className="bg-[#121c44] p-5 rounded-2xl border border-blue-500/20 space-y-2">
+            <div className="flex items-center gap-2 text-amber-400 font-bold text-xs uppercase font-mono">
+              <Cpu size={16} />
+              <span>What is Bitcoin?</span>
             </div>
-          )}
-
-          {isEligible === 'notEligible' && (
-            <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-xs text-rose-455 space-y-2">
-              <span className="font-black block uppercase tracking-wider">❌ ADDRESS INELIGIBLE / WRONG HASH</span>
-              <p>Please enter a valid ERC-20 cryptographic address prefixing with 0x (must be at least 40 chars) to simulate successful check conditions.</p>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Accordions for high fidelity Bangladeshi Crypto FAQs */}
-      <div className="bg-[#0b122f] border border-blue-500/20 p-6 md:p-8 rounded-3xl shadow-xl space-y-6">
-        <div>
-          <h3 className="text-lg md:text-xl font-black text-white uppercase italic tracking-tight flex items-center gap-2">
-            <HelpCircle size={18} className="text-cyan-405" />
-            {getTxt('Detailed Bengali Tutorials & Q&A Board', 'কম্যুনিটি প্রশ্নোত্তর গাইড এবং টিউটোরিয়াল')}
-          </h3>
-          <p className="text-xs text-blue-200">
-            {getTxt('Expand questions keying to daily digital freelancing legalities and solutions.', 'ক্রিপ্টো লেনদেনের আইনি বাধা ও ফ্রিল্যান্সারদের সুরক্ষামূলক প্রশ্নোত্তর ডেসক্রিপশন দেখে নিন।')}
-          </p>
-        </div>
-
-        <div className="divide-y divide-blue-500/15">
-          {banglaFaqs.map((faq, i) => {
-            const isOpen = selectedFaq === i;
-            return (
-              <div key={i} className="py-4">
-                <button
-                  onClick={() => setSelectedFaq(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between text-left cursor-pointer group"
-                >
-                  <div className="space-y-1 pr-4">
-                    <h4 className="text-sm font-black text-white group-hover:text-cyan-400 transition-colors">
-                      {faq.q}
-                    </h4>
-                    <span className="text-[10.5px] italic text-blue-350 block">
-                      {faq.enQ}
-                    </span>
-                  </div>
-                  {isOpen ? <ChevronUp size={16} className="text-blue-300" /> : <ChevronDown size={16} className="text-blue-300" />}
-                </button>
-                {isOpen && (
-                  <div className="mt-3.5 p-4.5 bg-[#0f1737] rounded-xl border border-blue-500/10 text-xs md:text-sm text-blue-105 leading-relaxed animate-fade-in">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* NEW SECTION: EDUCATIONAL REWARD LOG & LIVE MOCKUP BALANCE CLAIM BLOCK */}
-      {(() => {
-        const [rewardBalance, setRewardBalance] = useState<number>(0);
-        const [claimSuccess, setClaimSuccess] = useState<boolean>(false);
-
-        return (
-          <div className="bg-[#0b122f] border-2 border-emerald-500/15 p-6 md:p-8 rounded-3xl shadow-xl space-y-6">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="space-y-2">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 rounded-full text-emerald-400 font-bold uppercase text-[9.5px] border border-emerald-500/25 tracking-wider">
-                  <Award size={12} className="text-emerald-400" />
-                  <span>Interactive Rewards Engine</span>
-                </div>
-                <h3 className="text-lg md:text-xl font-black text-white uppercase italic tracking-tight">
-                  🏆 {getTxt('Verse Learning Rewards & Education Points Claims', 'ভার্স লার্নিং রিওয়ার্ডস ও কুইজ বোনাস দাবি পোর্টাল')}
-                </h3>
-                <p className="text-xs text-blue-200">
-                  {getTxt(
-                    'Acquire mock learning credits through your interactions. Safely transfer them to your simulated gas voucher balance.',
-                    'সম্পূর্ণ ফ্রিতে পড়াশোনা শেষ করে আপনার ডেমো লার্নিং পয়েন্ট ওয়ালেটে যুক্ত করুন এবং ব্লকচেইন ট্রানজেকশন ক্লেইম অডিট প্র্যাকটিস করুন।'
-                  )}
-                </p>
-              </div>
-
-              {/* Reward status widget */}
-              <div className="bg-[#0f1737] px-6 py-4.5 rounded-2xl border border-emerald-500/20 text-center space-y-1 min-w-[200px]">
-                <span className="text-[10px] uppercase font-black tracking-widest text-[#818cf8] block">Accrued Edu-Voucher</span>
-                <span className="text-3xl font-mono font-black text-emerald-450 block">{rewardBalance} VERSE</span>
-                <div className="pt-2">
-                  <button
-                    onClick={() => {
-                      setRewardBalance(rewardBalance + 100);
-                      setClaimSuccess(true);
-                      setTimeout(() => setClaimSuccess(false), 3000);
-                    }}
-                    className="px-4 py-1.5 bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-900 font-extrabold uppercase text-[10px] rounded-lg cursor-pointer transition-all hover:scale-105 active:scale-95 shadow-md block w-full text-center"
-                  >
-                    {getTxt('Claim +100 Point', '+১০০ বোনাস যুক্ত করুন')}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {claimSuccess && (
-              <div className="p-3.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-center text-xs text-emerald-400 font-bold animate-pulse">
-                🎉 {getTxt('Success! 100 VERSE credited offline inside your browser local sandbox memory.', 'সফলভাবে ১০০ ভার্স বোনাস পয়েন্ট আপনার ব্রাউজার মেমরিতে যুক্ত করা হয়েছে!')}
-              </div>
-            )}
+            <p className="text-slate-300 text-xs leading-relaxed">
+              Bitcoin (BTC) is the world's first decentralized digital currency. Introduced in 2008 by Satoshi Nakamoto, it enables direct peer-to-peer monetary transfers across the globe without intermediaries like banks or governments.
+            </p>
           </div>
-        );
-      })()}
 
-      {/* NEW SECTION: WEBINAR EVENTS CALENDAR & BENGALI VIDEO RESOURCE DIRECTORY */}
-      <div className="bg-[#0b122f] border border-blue-500/20 p-6 md:p-8 rounded-3xl shadow-xl space-y-6">
-        <div>
-          <h3 className="text-lg md:text-xl font-black text-white uppercase italic tracking-tight flex items-center gap-2">
-            <Trophy size={18} className="text-indigo-405" />
-            {getTxt('Bangladesh Active Safety Webinars & Tutorial Directories', 'বাংলাদেশ সেফটি ওয়েবিনার ও এয়ারড্রপ ভিডিও টিউটোরিয়াল')}
-          </h3>
-          <p className="text-xs text-blue-200">
-            {getTxt('Schedule of upcoming digital safety bootcamps and video guides.', 'পরবর্তী ক্রিপ্টো অডিট ও স্ক্যাম এড়ানোর ফ্রি ওয়ার্কশপ শিডিউল এবং গুরুত্বপূর্ণ গাইড ভিডিওসমূহ সংগ্রহ করুন।')}
-          </p>
+          <div className="bg-[#121c44] p-5 rounded-2xl border border-blue-500/20 space-y-2">
+            <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase font-mono">
+              <Layers size={16} />
+              <span>What is Blockchain?</span>
+            </div>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              A blockchain is a shared, immutable digital ledger. Transactions are recorded in blocks cryptographically chained together, synchronized across thousands of independent nodes worldwide.
+            </p>
+          </div>
+
+          <div className="bg-[#121c44] p-5 rounded-2xl border border-blue-500/20 space-y-2">
+            <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase font-mono">
+              <Lock size={16} />
+              <span>What is Decentralization?</span>
+            </div>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              Decentralization removes central control. No single company, state, or authority can unilaterally alter the ledger, censor valid transactions, or inflate the fixed 21,000,000 BTC supply cap.
+            </p>
+          </div>
+
+          <div className="bg-[#121c44] p-5 rounded-2xl border border-blue-500/20 space-y-2 md:col-span-2 lg:col-span-3">
+            <h4 className="text-white font-bold text-xs uppercase font-mono text-cyan-300">Why Bitcoin Matters Globally</h4>
+            <p className="text-slate-300 text-xs leading-relaxed">
+              Bitcoin provides sovereign financial independence. It empowers anyone with an internet connection to hold, send, and receive digital wealth securely using non-custodial cryptographic keys, protected against inflation and arbitrary monetary policy.
+            </p>
+          </div>
+
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Events calendar block */}
-          <div className="bg-[#0f1737] p-5 rounded-2xl border border-blue-500/10 space-y-4">
-            <span className="text-[10.5px] font-mono font-black uppercase text-indigo-300 block tracking-wider">📅 Upcoming Live Webinars (100% Free)</span>
-            <div className="divide-y divide-blue-505/10">
-              <div className="py-3 flex justify-between items-center text-xs">
-                <div>
-                  <span className="font-bold text-white block">P2P Banking Safety & Cyber-Crime Prevention</span>
-                  <span className="text-[10.5px] text-[#818cf8] block">Date: 2026-07-15 | Speaker: Verse Security Core</span>
-                </div>
-                <span className="text-[9px] bg-red-500/10 text-red-400 px-2.5 py-0.5 rounded font-black uppercase tracking-wider shrink-0 ml-4">Hot</span>
+      {/* 7. BITCOIN.COM WALLET DOWNLOAD SECTION */}
+      <section className="bg-gradient-to-r from-[#0d1a42] via-[#102256] to-[#0c163a] border-2 border-cyan-400/40 rounded-3xl p-6 md:p-10 space-y-6 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+          
+          <div className="space-y-4 text-center lg:text-left flex-1">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-950 border border-cyan-500/40 rounded-full text-cyan-300 font-bold text-xs uppercase tracking-widest">
+              <Smartphone size={14} className="text-cyan-400" />
+              <span>Official Wallet Application</span>
+            </div>
+
+            <h2 className="text-2xl md:text-4xl font-black text-white uppercase tracking-tight">
+              Bitcoin.com Wallet
+            </h2>
+
+            <p className="text-slate-200 text-sm leading-relaxed max-w-xl">
+              Take complete self-custodial control of your digital assets. Trusted by tens of millions of users worldwide, the official Bitcoin.com Wallet allows you to send, receive, swap, and manage BTC, VERSE, ETH, BCH, and Web3 tokens safely.
+            </p>
+
+            {/* Wallet Advantages */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-left">
+              <div className="bg-[#0b1333]/80 p-3 rounded-xl border border-blue-500/20">
+                <div className="text-cyan-400 font-bold text-xs font-mono uppercase mb-0.5">100% Non-Custodial</div>
+                <div className="text-[11px] text-slate-300">You hold private keys & seed phrases</div>
               </div>
-              <div className="py-3 flex justify-between items-center text-xs">
-                <div>
-                  <span className="font-bold text-white block">MetaMask Smart Contract Revoke & Approved Limits</span>
-                  <span className="text-[10.5px] text-[#818cf8] block">Date: 2026-08-01 | Web3 Hands-on Bootcamp</span>
-                </div>
-                <span className="text-[9px] bg-indigo-500/10 text-indigo-400 px-2.5 py-0.5 rounded font-bold uppercase shrink-0 ml-4">Free Access</span>
+
+              <div className="bg-[#0b1333]/80 p-3 rounded-xl border border-blue-500/20">
+                <div className="text-emerald-400 font-bold text-xs font-mono uppercase mb-0.5">Multi-Chain DEX</div>
+                <div className="text-[11px] text-slate-300">Instant Verse DEX & Web3 swaps</div>
+              </div>
+
+              <div className="bg-[#0b1333]/80 p-3 rounded-xl border border-blue-500/20">
+                <div className="text-indigo-400 font-bold text-xs font-mono uppercase mb-0.5">Buy & Sell Rails</div>
+                <div className="text-[11px] text-slate-300">Easy fiat gateways & card options</div>
               </div>
             </div>
           </div>
 
-          {/* Video guides directory */}
-          <div className="bg-[#0f1737] p-5 rounded-2xl border border-blue-500/10 space-y-4">
-            <span className="text-[10.5px] font-mono font-black uppercase text-cyan-400 block tracking-wider">📹 Essential Bengali Video Walkthrough Guides</span>
-            <div className="space-y-3.5">
-              <div className="p-3 bg-[#0a112a] rounded-xl border border-blue-500/5 hover:border-cyan-405/25 transition-all flex items-center justify-between">
-                <div>
-                  <span className="text-xs font-bold text-white block">1. How to create and laminating cold paper backup seed keys</span>
-                  <span className="text-[10px] text-blue-300">Duration: 14 mins | Language: Bangla (বাংলা)</span>
-                </div>
-                <span className="text-xs text-cyan-400 hover:underline cursor-pointer">Watch</span>
-              </div>
-              <div className="p-3 bg-[#0a112a] rounded-xl border border-blue-500/5 hover:border-cyan-405/25 transition-all flex items-center justify-between">
-                <div>
-                  <span className="text-xs font-bold text-white block">2. Revoking malicious approvals using Revoke.cash sandbox</span>
-                  <span className="text-[10px] text-blue-300">Duration: 9 mins | Language: Bangla (বাংলা)</span>
-                </div>
-                <span className="text-xs text-cyan-400 hover:underline cursor-pointer">Watch</span>
-              </div>
-            </div>
+          {/* Download CTA Button */}
+          <div className="shrink-0 text-center space-y-3">
+            <a 
+              href={OFFICIAL_WALLET_LINK}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-black text-sm uppercase tracking-wider transition-all duration-300 shadow-xl shadow-cyan-500/30 hover:scale-105 flex items-center justify-center gap-3 font-mono border border-white/20"
+            >
+              <Download size={20} />
+              <span>Download Bitcoin.com Wallet</span>
+              <ExternalLink size={16} />
+            </a>
+            
+            <p className="text-[11px] text-slate-400 font-mono">
+              Official Link: branch.wallet.bitcoin.com
+            </p>
           </div>
+
         </div>
-      </div>
+      </section>
 
     </div>
   );

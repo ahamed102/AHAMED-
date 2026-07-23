@@ -9,11 +9,7 @@ export default function NewsTab({ language }: NewsTabProps) {
   const [selectedTimelineEvent, setSelectedTimelineEvent] = useState<string>('genesis');
   const [activeCycle, setActiveCycle] = useState<'bull2017' | 'bear2018' | 'bull2021' | 'bear2022' | 'bull2024'>('bull2024');
 
-  const getTxt = (en: string, bn: string) => {
-    if (language === 'en') return en;
-    if (language === 'bn') return bn;
-    return `${bn} (${en})`;
-  };
+  const getTxt = (en: string, _bn?: string) => en;
 
   const timelineEvents = [
     {
@@ -191,18 +187,11 @@ export default function NewsTab({ language }: NewsTabProps) {
               {getTxt('Historical Fact Sheet', 'ঐতিহাসিক সত্যতা যাচাইপত্র')}
             </div>
             <h4 className="text-lg md:text-2xl font-black text-white uppercase tracking-tight">
-              {language === 'en' ? selectedEvent.titleEn : selectedEvent.titleBn}
+              {selectedEvent.titleEn}
             </h4>
             
             <div className="text-xs md:text-sm text-blue-100 leading-relaxed space-y-2">
-              {language === 'en' && <p>{selectedEvent.detailsEn}</p>}
-              {language === 'bn' && <p>{selectedEvent.detailsBn}</p>}
-              {language === 'bilingual' && (
-                <div className="space-y-2">
-                  <p className="text-blue-100">{selectedEvent.detailsBn}</p>
-                  <p className="text-slate-400 border-l-2 border-indigo-400 pl-4 italic text-xs">{selectedEvent.detailsEn}</p>
-                </div>
-              )}
+              <p>{selectedEvent.detailsEn}</p>
             </div>
 
             <div className="border-t border-blue-500/15 pt-4 flex flex-col md:flex-row md:items-center gap-3">
@@ -210,7 +199,7 @@ export default function NewsTab({ language }: NewsTabProps) {
                 {getTxt('Macro Impact Outcome:', 'প্রধান বৈশ্বিক প্রভাব ও অবসান:')}{' '}
               </span>
               <p className="text-xs text-white font-bold bg-blue-950/70 p-2 rounded-lg border border-blue-500/10 flex-1">
-                {language === 'en' ? selectedEvent.impactEn : selectedEvent.impactBn}
+                {selectedEvent.impactEn}
               </p>
             </div>
           </div>
@@ -277,14 +266,7 @@ export default function NewsTab({ language }: NewsTabProps) {
             </div>
 
             <div className="text-xs md:text-sm text-blue-100 leading-relaxed border-l-3 border-[#10b981] pl-4">
-              {language === 'en' && <p>{cycleData[activeCycle].descEn}</p>}
-              {language === 'bn' && <p>{cycleData[activeCycle].descBn}</p>}
-              {language === 'bilingual' && (
-                <div className="space-y-1.5">
-                  <p className="text-blue-100">{cycleData[activeCycle].descBn}</p>
-                  <p className="text-slate-400 text-xs italic">{cycleData[activeCycle].descEn}</p>
-                </div>
-              )}
+              <p>{cycleData[activeCycle].descEn}</p>
             </div>
           </div>
 
