@@ -18,6 +18,7 @@ import NewsTab from './components/NewsTab';
 import MarketTab from './components/MarketTab';
 import SecurityTab from './components/SecurityTab';
 import CommunityTab from './components/CommunityTab';
+import BookFairTab from './components/BookFairTab';
 
 import { 
   Search, 
@@ -48,7 +49,7 @@ import {
 export default function App() {
   const [isInitializing, setIsInitializing] = useState<boolean>(true);
   const [loadingProgress, setLoadingProgress] = useState<number>(0);
-  const [activeTab, setActiveTab] = useState<'home' | 'academy' | 'news' | 'market' | 'security' | 'community'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'academy' | 'news' | 'market' | 'security' | 'community' | 'bookfair'>('home');
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
@@ -99,70 +100,70 @@ export default function App() {
       duration: '10 min',
       title: 'What is Web3?',
       description: 'The Transition to read-write-own internet.',
-      topicId: 'crypto-foundations'
+      topicId: 'step-1-web3'
     },
     {
       step: 2,
       duration: '12 min',
       title: 'Blockchain',
       description: 'Decentralized ledgers and immutable databases.',
-      topicId: 'crypto-foundations'
+      topicId: 'step-2-blockchain'
     },
     {
       step: 3,
       duration: '10 min',
       title: 'Crypto Wallets',
       description: 'Cryptographic identity, keys, and seed phrases.',
-      topicId: 'p2p-security-basics'
+      topicId: 'step-3-wallets'
     },
     {
       step: 4,
       duration: '11 min',
       title: 'Cryptocurrencies',
       description: 'Native coins, standard tokens, gas fees, and utility.',
-      topicId: 'crypto-foundations'
+      topicId: 'step-4-cryptocurrencies'
     },
     {
       step: 5,
       duration: '10 min',
       title: 'NFTs & Digital Assets',
       description: 'Digital scarcity, provenance, and Verse Voyagers.',
-      topicId: 'verse-case-study'
+      topicId: 'step-5-nfts'
     },
     {
       step: 6,
       duration: '12 min',
       title: 'DeFi & Verse DEX',
       description: 'Lending pools, AMMs, and decentralized finance.',
-      topicId: 'verse-case-study'
+      topicId: 'step-6-defi'
     },
     {
       step: 7,
       duration: '10 min',
       title: 'DAOs & Governance',
       description: 'Internet-native cooperatives and community voting.',
-      topicId: 'verse-case-study'
+      topicId: 'step-7-daos'
     },
     {
       step: 8,
       duration: '11 min',
       title: 'Web3 Security',
       description: 'Protecting private keys and detecting scam schemes.',
-      topicId: 'scams-uncovered'
+      topicId: 'step-8-security'
     },
     {
       step: 9,
       duration: '8 min',
       title: 'Verse Ecosystem',
       description: 'Interactive learning, rewards, and VERSE utility.',
-      topicId: 'verse-case-study'
+      topicId: 'step-9-verse-ecosystem'
     },
     {
       step: 10,
       duration: '5 min',
       title: 'Verse Hub & Rewards',
       description: 'Registering on Verse Hub and connecting Web3 wallet.',
-      topicId: 'verse-case-study'
+      topicId: 'step-10-verse-hub'
     }
   ];
 
@@ -259,14 +260,6 @@ export default function App() {
                   className="w-full bg-[#12173d] border border-purple-500/20 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400 transition-all"
                 />
               </div>
-
-              <button 
-                onClick={() => setIsInitializing(true)}
-                title="Replay Splash Screen"
-                className="p-2 rounded-xl bg-[#12173d] border border-purple-500/20 text-slate-300 hover:text-white hover:border-purple-400 transition-all"
-              >
-                <RefreshCw size={15} />
-              </button>
             </div>
           </div>
 
@@ -275,6 +268,7 @@ export default function App() {
             <nav className="flex gap-2 min-w-max pb-1">
               {[
                 { id: 'home', label: 'Home', icon: Globe },
+                { id: 'bookfair', label: 'Verse Book Fair', icon: BookOpen },
                 { id: 'academy', label: 'Roadmap & Academy', icon: Compass },
                 { id: 'news', label: 'News & History', icon: Newspaper },
                 { id: 'market', label: 'Market & Trading', icon: TrendingUp },
@@ -481,6 +475,7 @@ export default function App() {
           </div>
         ) : (
           <div>
+            {activeTab === 'bookfair' && <BookFairTab language="en" />}
             {activeTab === 'academy' && <AcademyTab language="en" />}
             {activeTab === 'news' && <NewsTab language="en" />}
             {activeTab === 'market' && <MarketTab language="en" />}

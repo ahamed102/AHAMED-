@@ -17,14 +17,15 @@ interface CoinPriceData {
 
 export default function MarketTab({ language }: MarketTabProps) {
   const [tickerQuery, setTickerQuery] = useState('');
-  const [selectedCoin, setSelectedCoin] = useState<string>('BTC');
+  const [selectedCoin, setSelectedCoin] = useState<string>('VERSE');
   
   // Custom Live Prices from public API with realistic default fallbacks
   const defaultTickerList: CoinPriceData[] = [
+    { symbol: 'VERSE', name: 'Verse', price: 0.000018, change24h: -7.72, marketCap: '38M' },
+    { symbol: 'BNB', name: 'Bnb', price: 575.10, change24h: 0.85, marketCap: '84B' },
     { symbol: 'BTC', name: 'Bitcoin', price: 64250.00, change24h: 1.45, marketCap: '1.26T' },
     { symbol: 'ETH', name: 'Ethereum', price: 3485.50, change24h: -1.25, marketCap: '418B' },
     { symbol: 'SOL', name: 'Solana', price: 142.25, change24h: 3.94, marketCap: '65B' },
-    { symbol: 'BNB', name: 'BNB', price: 575.10, change24h: 0.15, marketCap: '84B' },
     { symbol: 'ADA', name: 'Cardano', price: 0.385, change24h: -2.12, marketCap: '13.7B' },
     { symbol: 'DOT', name: 'Polkadot', price: 5.85, change24h: 1.05, marketCap: '8.4B' },
     { symbol: 'MATIC', name: 'Polygon', price: 0.552, change24h: 1.30, marketCap: '5.4B' },

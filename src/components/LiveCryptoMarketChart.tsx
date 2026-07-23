@@ -29,6 +29,38 @@ export interface CryptoAsset {
 
 const SUPPORTED_ASSETS: CryptoAsset[] = [
   {
+    id: 'verse',
+    symbol: 'VERSE',
+    name: 'Verse',
+    coingeckoId: 'verse',
+    binanceSymbol: 'verseusdt',
+    price: 0.000018,
+    change24h: -7.72,
+    priceDiff24h: -0.0000015,
+    marketCap: '38M',
+    volume24h: '1.8M',
+    source: 'Wallet.bitcoin.com',
+    logo: '/verse_logo.jpg',
+    descriptionEn: 'VERSE is the official rewards and utility token powering the Wallet.bitcoin.com ecosystem, offering staking rewards, fee discounts, and non-custodial Web3 utilities.',
+    descriptionBn: 'ভার্স (VERSE) হলো Wallet.bitcoin.com ইকোসিস্টেমের অফিশিয়াল রিওয়ার্ড ও ইউটিলিটি টোকেন, যা স্ট্যাকিং রিওয়ার্ড, ফি ছাড় এবং ডিএও (DAO) পরিচালনায় ব্যবহৃত হয়।'
+  },
+  {
+    id: 'binancecoin',
+    symbol: 'BNB',
+    name: 'Bnb',
+    coingeckoId: 'binancecoin',
+    binanceSymbol: 'bnbusdt',
+    price: 575.10,
+    change24h: 0.85,
+    priceDiff24h: 4.85,
+    marketCap: '84B',
+    volume24h: '1.1B',
+    source: 'CoinGecko',
+    logo: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="%23F3BA2F"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="36" fill="%23000000">B</text></svg>',
+    descriptionEn: 'BNB powers the BNB Chain ecosystem and offers gas fee payments, staking, and decentralized exchange liquidity.',
+    descriptionBn: 'বিএনবি (BNB) স্মার্ট চেইনের গ্যাস ফি প্রদান, স্ট্যাকিং এবং বিভিন্ন বিকেন্দ্রীকৃত এক্সচেঞ্জে ব্যবহৃত মূল টোকেন।'
+  },
+  {
     id: 'bitcoin',
     symbol: 'BTC',
     name: 'Bitcoin',
@@ -61,38 +93,6 @@ const SUPPORTED_ASSETS: CryptoAsset[] = [
     descriptionBn: 'ইথেরিয়াম হলো স্মার্ট কন্ট্রাক্ট সুবিধা সম্বলিত একটি বিকেন্দ্রীকৃত ওপেন-সোর্স ব্লকচেইন, যা ডিফাই (DeFi) ও ডি-অ্যাপস পরিচালনা করে।'
   },
   {
-    id: 'verse',
-    symbol: 'VERSE',
-    name: 'Verse',
-    coingeckoId: 'verse',
-    binanceSymbol: 'verseusdt',
-    price: 0.000018,
-    change24h: -7.72,
-    priceDiff24h: -0.0000015,
-    marketCap: '38M',
-    volume24h: '1.8M',
-    source: 'CoinGecko',
-    logo: '/verse_logo.jpg',
-    descriptionEn: 'VERSE is the rewards and utility token powering the Bitcoin.com ecosystem, offering staking rewards, fee discounts, and DAO governance.',
-    descriptionBn: 'ভার্স (VERSE) হলো ইকোসিস্টেমের রিওয়ার্ড ও ইউটিলিটি টোকেন, যা স্ট্যাকিং রিওয়ার্ড, ফি ছাড় এবং ডিএও (DAO) পরিচালনায় ব্যবহৃত হয়।'
-  },
-  {
-    id: 'tether',
-    symbol: 'USDT',
-    name: 'Tether USD',
-    coingeckoId: 'tether',
-    binanceSymbol: 'usdtusdt',
-    price: 1.00,
-    change24h: 0.01,
-    priceDiff24h: 0.0001,
-    marketCap: '114B',
-    volume24h: '42B',
-    source: 'CoinGecko',
-    logo: 'https://assets.coingecko.com/coins/images/325/large/Tether.png',
-    descriptionEn: 'Tether (USDT) is the leading fiat-collateralized stablecoin pegged 1:1 to the US Dollar for trading stability.',
-    descriptionBn: 'টেথার (USDT) হলো মার্কিন ডলারের সাথে ১:১ মূল্যে সমতা বজায় রাখা বিশ্বের শীর্ষস্থানীয় স্টেবলকয়েন।'
-  },
-  {
     id: 'solana',
     symbol: 'SOL',
     name: 'Solana',
@@ -109,20 +109,20 @@ const SUPPORTED_ASSETS: CryptoAsset[] = [
     descriptionBn: 'সোলানা হলো অত্যন্ত দ্রুতগতির উচ্চ-পারফরম্যান্স ব্লকচেইন নেটওয়ার্ক, যা কম খরচে লেনদেন সম্পন্ন করে।'
   },
   {
-    id: 'binancecoin',
-    symbol: 'BNB',
-    name: 'BNB',
-    coingeckoId: 'binancecoin',
-    binanceSymbol: 'bnbusdt',
-    price: 575.10,
-    change24h: 0.85,
-    priceDiff24h: 4.85,
-    marketCap: '84B',
-    volume24h: '1.1B',
+    id: 'tether',
+    symbol: 'USDT',
+    name: 'Tether USD',
+    coingeckoId: 'tether',
+    binanceSymbol: 'usdtusdt',
+    price: 1.00,
+    change24h: 0.01,
+    priceDiff24h: 0.0001,
+    marketCap: '114B',
+    volume24h: '42B',
     source: 'CoinGecko',
-    logo: 'https://assets.coingecko.com/coins/images/825/large/bnb-icon2x.png',
-    descriptionEn: 'BNB powers the BNB Chain ecosystem and offers gas fee payments, staking, and decentralized exchange liquidity.',
-    descriptionBn: 'বিএনবি (BNB) স্মার্ট চেইনের গ্যাস ফি প্রদান, স্ট্যাকিং এবং বিভিন্ন বিকেন্দ্রীকৃত এক্সচেঞ্জে ব্যবহৃত মূল টোকেন।'
+    logo: 'https://assets.coingecko.com/coins/images/325/large/Tether.png',
+    descriptionEn: 'Tether (USDT) is the leading fiat-collateralized stablecoin pegged 1:1 to the US Dollar for trading stability.',
+    descriptionBn: 'টেথার (USDT) হলো মার্কিন ডলারের সাথে ১:১ মূল্যে সমতা বজায় রাখা বিশ্বের শীর্ষস্থানীয় স্টেবলকয়েন।'
   },
   {
     id: 'ripple',
@@ -167,7 +167,7 @@ interface ChartDataPoint {
 }
 
 export default function LiveCryptoMarketChart({ language }: LiveCryptoMarketChartProps) {
-  const [selectedSymbol, setSelectedSymbol] = useState<string>('BTC');
+  const [selectedSymbol, setSelectedSymbol] = useState<string>('VERSE');
   const [timeframe, setTimeframe] = useState<Timeframe>('24H');
   const [assetList, setAssetList] = useState<CryptoAsset[]>(SUPPORTED_ASSETS);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -550,8 +550,15 @@ export default function LiveCryptoMarketChart({ language }: LiveCryptoMarketChar
                   className="h-full w-full object-cover rounded-xl"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
-                    // Fallback icon if image fails
-                    (e.target as HTMLElement).style.display = 'none';
+                    if (currentAsset.symbol === 'VERSE') {
+                      (e.currentTarget as HTMLImageElement).src = '/verse_logo.jpg';
+                    } else if (currentAsset.symbol === 'BNB') {
+                      (e.currentTarget as HTMLImageElement).src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="%23F3BA2F"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="36" fill="%23000000">B</text></svg>';
+                    } else if (currentAsset.symbol === 'BTC') {
+                      (e.currentTarget as HTMLImageElement).src = 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png';
+                    } else {
+                      (e.currentTarget as HTMLImageElement).src = '/verse_logo.jpg';
+                    }
                   }}
                 />
               </div>
@@ -574,7 +581,7 @@ export default function LiveCryptoMarketChart({ language }: LiveCryptoMarketChar
 
           {/* Asset Switcher Quick Buttons */}
           <div className="flex flex-wrap items-center gap-2">
-            {['BTC', 'ETH', 'VERSE', 'SOL', 'USDT'].map((sym) => (
+            {['VERSE', 'BNB', 'BTC', 'ETH', 'SOL', 'USDT'].map((sym) => (
               <button
                 key={sym}
                 onClick={() => setSelectedSymbol(sym)}
@@ -922,6 +929,17 @@ export default function LiveCryptoMarketChart({ language }: LiveCryptoMarketChar
                       alt={asset.name} 
                       className="h-8 w-8 object-cover rounded-full"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        if (asset.symbol === 'VERSE' || asset.symbol === 'V') {
+                          (e.currentTarget as HTMLImageElement).src = '/verse_logo.jpg';
+                        } else if (asset.symbol === 'BNB') {
+                          (e.currentTarget as HTMLImageElement).src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="%23F3BA2F"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="36" fill="%23000000">B</text></svg>';
+                        } else if (asset.symbol === 'BTC') {
+                          (e.currentTarget as HTMLImageElement).src = 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png';
+                        } else {
+                          (e.currentTarget as HTMLImageElement).src = '/verse_logo.jpg';
+                        }
+                      }}
                     />
                     <div>
                       <h4 className="text-sm font-black text-white uppercase">{asset.symbol}</h4>
@@ -1001,7 +1019,7 @@ export default function LiveCryptoMarketChart({ language }: LiveCryptoMarketChar
               alt="Verse Logo" 
               className="h-8 w-8 object-cover rounded-full border border-cyan-400/40 shadow-md shrink-0" 
               onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = 'https://i.ibb.co.com/nqHkRw7V/IMG-20260724-011109-166.jpg';
+                (e.currentTarget as HTMLImageElement).src = '/verse_logo_new.jpg';
               }}
             />
             <h3 className="text-lg md:text-xl font-black text-white uppercase italic tracking-tight font-mono">

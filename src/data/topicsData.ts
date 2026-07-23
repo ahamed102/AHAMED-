@@ -3,6 +3,22 @@ import { Topic, CoinInfo } from '../types';
 export const POPULAR_COINS: CoinInfo[] = [
   {
     rank: 1,
+    name: 'Verse',
+    symbol: 'VERSE',
+    type: 'Wallet.bitcoin.com Ecosystem Utility',
+    useCaseEn: 'Official utility and rewards token powering the Wallet.bitcoin.com ecosystem, offering staking rewards, fee discounts, and non-custodial DEX liquidity.',
+    useCaseBn: 'Wallet.bitcoin.com ইকোসিস্টেমের অফিশিয়াল ইউটিলিটি ও রিওয়ার্ড টোকেন, যা স্ট্যাকিং রিওয়ার্ড, ডেক্স ট্রেডিং এবং নন-কাস্টডিয়াল ওয়েব৩ সেবায় ব্যবহৃত হয়।'
+  },
+  {
+    rank: 2,
+    name: 'Bnb',
+    symbol: 'BNB',
+    type: 'Ecosystem Utility & Gas',
+    useCaseEn: 'BNB powers the BNB Chain ecosystem and offers gas fee payments, staking, and decentralized exchange liquidity.',
+    useCaseBn: 'বিএনবি (BNB) স্মার্ট চেইনের গ্যাস ফি প্রদান, স্ট্যাকিং এবং বিভিন্ন বিকেন্দ্রীকৃত এক্সচেঞ্জে ব্যবহৃত মূল টোকেন।'
+  },
+  {
+    rank: 3,
     name: 'Bitcoin',
     symbol: 'BTC',
     type: 'Layer 1 / Store of Value',
@@ -324,6 +340,29 @@ export const POPULAR_COINS: CoinInfo[] = [
 ];
 
 export const ROW_1_TOPICS: Topic[] = [
+  {
+    id: 'verse-book-fair',
+    titleEn: 'Verse Book Fair: Decentralized Publishing & Author Sovereignty',
+    titleBn: 'ভার্স বুক ফেয়ার: বিকেন্দ্রীকৃত গ্রন্থ প্রকাশনা ও লেখক স্বায়ত্তশাসন',
+    shortDescriptionEn: 'Explore the Verse Book Fair ecosystem: 95% author royalties, NFT manuscript contracts, metaverse book stalls, and literary grants.',
+    shortDescriptionBn: 'ভার্স বুক ফেয়ার ইকোসিস্টেমের বিস্তারিত: ৯৫% রয়্যালটি, এনএফটি ই-বুক কনট্রাক্ট, প্যাভিলিয়ন স্টল এবং সাহিত্য গ্রান্ট।',
+    category: 'Verse Ecosystem',
+    iconName: 'BookOpen',
+    paragraphs: [
+      {
+        en: 'The Verse Book Fair is a revolutionary Web3 literary platform designed to empower independent writers, researchers, and content creators globally. By leveraging transparent smart contracts on the Polygon / Verse blockchain, authors retain 95% of every book sale directly in $VERSE tokens, completely bypassing predatory publishing intermediaries.',
+        bn: 'ভার্স বুক ফেয়ার হলো একটি বৈপ্লবিক ওয়েব৩ সাহিত্য প্ল্যাটফর্ম, যা বিশ্বব্যাপী স্বাধীন লেখক, গবেষক এবং তথ্য পরিবেশকদের ক্ষমতায়িত করতে নির্মিত। পলিগন / ভার্স ব্লকচেইনে স্বচ্ছ স্মার্ট চুক্তির মাধ্যমে লেখকরা মধ্যস্বত্বভোগীদের এড়িয়ে প্রতিটি বই বিক্রির ৯৫% অর্থ সরাসরি $VERSE টোকেনে তাদের নিজস্ব ওয়ালেটে পান।'
+      },
+      {
+        en: 'Every manuscript published at the Verse Book Fair is minted as an immutable NFT literary asset with IPFS storage backends. Readers hold non-custodial ownership of their e-books, allowing them to resell, lend, or collect signed physical copies stamped with verified Web3 authenticity chips.',
+        bn: 'ভার্স বুক ফেয়ারে প্রকাশিত প্রতিটি বই আইপিএফএস (IPFS) স্টোরেজের সাথে একটি অপরিবর্তনীয় এনএফটি ডিজিটাল সম্পদ হিসেবে তৈরি হয়। পাঠকরা তাদের ই-বুকের প্রকৃত স্বত্বাধিকার পান এবং তারা চাইলে সেকেন্ডারি মার্কেটে লেনদেন করতে বা অন-চেইন স্বাক্ষরযুক্ত হার্ডকপি সংগ্রহ করতে পারেন।'
+      },
+      {
+        en: 'Beyond digital publishing, the Verse Book Fair hosts annual metaverse pavilion stalls, live author Q&A panels, and distributes over $250,000 in Verse DAO Literary Grants to fund groundbreaking books on cryptography, financial sovereignty, and creative literature.',
+        bn: 'ডিজিটাল বইয়ের পাশাপাশি ভার্স বুক ফেয়ার আয়োজিত হয় বার্ষিক মেটাভার্স প্যাভিলিয়ন স্টল, সরাসরি লেখক প্রশ্নোত্তর পর্ব এবং ক্রিপ্টোগ্রাফি, আর্থিক স্বায়ত্তশাসন ও সৃজনশীল সাহিত্যের ওপর শ্রেষ্ঠ লেখকদেরকে $২৫০,০০০ ডলার মূল্যের ভার্স ডিএও সাহিত্য গ্রান্ট প্রদান করা হয়।'
+      }
+    ]
+  },
   {
     id: 'intro-crypto',
     titleEn: 'Decrypting the Core: Origin & Cryptography Basics',
@@ -761,7 +800,331 @@ export const ROW_6_TOPICS: Topic[] = [
   }
 ];
 
+export const HOMEPAGE_10_TOPICS: Topic[] = [
+  {
+    id: 'step-1-web3',
+    titleEn: 'Step 1: What is Web3? The Transition to the Read-Write-Own Internet',
+    titleBn: 'ধাপ ১: ওয়েব৩ কী? রিড-রাইট-ওন ইন্টারনেটের বৈপ্লবিক রূপান্তর',
+    shortDescriptionEn: 'Discover how Web3 shifts control from centralized tech giants to individuals through decentralized networks, cryptography, and true digital ownership.',
+    shortDescriptionBn: 'জানুন কীভাবে ওয়েব৩ কেন্দ্রীয় প্রযুক্তি সংস্থাগুলোর থেকে নিয়ন্ত্রণ কেড়ে নিয়ে সাধারণ মানুষের কাছে ডিজিটাল মালিকানা ফিরিয়ে দেয়।',
+    category: 'Core Web3 Syllabus',
+    iconName: 'Globe',
+    interactiveType: 'web-compare',
+    paragraphs: [
+      {
+        en: 'The evolution of the internet is defined by three distinct technological eras: Web1 (the read-only static web of the 1990s), Web2 (the read-write social media web dominated by tech monoliths), and Web3 (the read-write-own decentralized web). In Web2, users created content, but centralized corporations owned the user data, monetization, and accounts, monetizing personal metadata without permission.',
+        bn: 'ইন্টারনেটের বিবর্তনকে তিনটি প্রধান যুগে ভাগ করা যায়: ওয়েব১ (১৯৯০-এর দশকের কেবল পড়ার যোগ্য স্ট্যাটিক ওয়েব), ওয়েব২ (সামাজিক যোগাযোগমাধ্যম ও অ্যাপভিত্তিক শেয়ারিং ওয়েব) এবং ওয়েব৩ (বিকেন্দ্রীকৃত ডিজিটাল মালিকানার ওয়েব)। ওয়েব২-এ ব্যবহারকারীরা কনটেন্ট তৈরি করলেও ডেটা ও অ্যাকাউন্টের সম্পূর্ণ নিয়ন্ত্রণ ছিল কিছু জায়ান্ট কোম্পানির হাতে।'
+      },
+      {
+        en: 'Step 1 - Cryptographic Identity & Decentralized Accounts: Unlike Web2 platforms where you log in with centralized Google or Facebook accounts that can be unilaterally banned, Web3 utilizes cryptographic keypairs. Your wallet address serves as your universal digital identity across all decentralized applications without requiring central permission.',
+        bn: 'ধাপ ১ - ক্রিপ্টোগ্রাফিক পরিচয় ও বিকেন্দ্রীকৃত অ্যাকাউন্ট: ওয়েব২ প্ল্যাটফর্মের মতো এখানে কোনো ফেসবুক বা গুগলের লগইন প্রয়োজন হয় না যা কোম্পানি ইচ্ছা করলেই ব্লক করতে পারে। ওয়েব৩-এ আপনার ক্রিপ্টোগ্রাফিক ওয়ালেট অ্যাড্রেসই হলো সব অ্যাপের জন্য সর্বজনীন স্বাধীন ডিজিটাল পরিচয়।'
+      },
+      {
+        en: 'Step 2 - Peer-to-Peer Networks & Smart Contract Automation: Web3 operates on distributed node networks and smart contracts—self-executing code stored on immutable blockchains. These smart contracts replace human middlemen, board members, and escrow agents with deterministic mathematical execution.',
+        bn: 'ধাপ ২ - পিয়ার-টু-পিয়ার নেটওয়ার্ক ও স্মার্ট কন্ট্রাক্ট: ওয়েব৩ চালিত হয় বিস্তৃত নোড নেটওয়ার্ক এবং স্মার্ট কন্ট্রাক্টের মাধ্যমে—যেগুলো মূলত ব্লকচেইনে সংরক্ষিত স্বয়ংক্রিয় প্রোগ্রাম। এই কোডই কোনো মধ্যস্থতাকারী বা ব্যাংকিং ছাড়াই সকল চুক্তি নিরাপদে নিশ্চিত করে।'
+      },
+      {
+        en: 'Step 3 - Digital Sovereignty & Asset Portability: In Web3, every token, NFT, identity credential, or domain name you hold sits inside your non-custodial wallet. If a dApp shuts down, your assets remain completely safe on the underlying public blockchain, ready to be used in alternative applications.',
+        bn: 'ধাপ ৩ - ডিজিটাল স্বাধীনতা ও সম্পদের স্থানান্তরযোগ্যতা: ওয়েব৩-এ আপনার কেনা বা অর্জিত কোনো সম্পদ আপনার ওয়ালেটে থাকে। কোনো ওয়েবসাইট বা অ্যাপ বন্ধ হয়ে গেলেও আপনার অর্জিত সম্পদ ব্লকচেইনে সম্পূর্ণ নিরাপদ থাকে এবং অন্য যেকোনো অ্যাপে তা ব্যবহার করা যায়।'
+      },
+      {
+        en: 'Verse & Bitcoin.com Empowerment in South Asia: Verse Token and the Bitcoin.com ecosystem are built specifically to lower barriers for global Web3 entry. By offering non-custodial wallets, low-fee DEX swaps, and transparent educational pathways, Verse enables users in Bangladesh to participate directly in the global digital economy.',
+        bn: 'দক্ষিণ এশিয়ায় ভার্স ও বিটকয়েন.কম-এর ভূমিকা: ভার্স টোকেন এবং বিটকয়েন.কম ইকোসিস্টেম ওয়েব৩-তে অংশগ্রহণের বাধা দূর করতে তৈরি। সহজ নন-কাস্টডিয়াল ওয়ালেট এবং উন্মুক্ত শিক্ষার মাধ্যমে ভার্স বাংলাদেশের তরুণদের বৈশ্বিক মুক্ত অর্থনীতিতে অংশ নেওয়ার সুবর্ণ সুযোগ তৈরি করেছে।'
+      }
+    ]
+  },
+  {
+    id: 'step-2-blockchain',
+    titleEn: 'Step 2: Blockchain Architecture: Immutable Ledgers & Consensus Mechanisms',
+    titleBn: 'ধাপ ২: ব্লকচেইন আর্কিটেকচার: পরিবর্তনহীন লেজার এবং কনসেনসাস মেকানিজম',
+    shortDescriptionEn: 'An in-depth exploration of block structures, cryptographic hashing, Proof-of-Work vs Proof-of-Stake, and tamper-proof distributed ledgers.',
+    shortDescriptionBn: 'ব্লকচেইনের অভ্যন্তরীণ গঠন, ক্রিপ্টোগ্রাফিক হ্যাকিং, প্রুফ-অফ-ওয়ার্ক এবং প্রুফ-অফ-স্টেক ব্যবস্থার বিশদ আলোচনা।',
+    category: 'Core Web3 Syllabus',
+    iconName: 'Layers',
+    interactiveType: 'calculator',
+    paragraphs: [
+      {
+        en: 'At its structural core, a blockchain is an append-only, distributed ledger shared across a network of peer-to-peer computer nodes. Unlike standard database architectures where a database administrator can edit or delete historical records, blockchain entries are mathematically linked and permanently immutable.',
+        bn: 'মূল কাঠামোর দিক থেকে ব্লকচেইন হলো একটি পরিবর্তনহীন ও অনুলিপিযোগ্য ডিস্ট্রিবিউটেড লেজার যা বিশ্বের হাজার হাজার কম্পিউটারে একসাথে সংরক্ষিত থাকে। সাধারণ ডাটাবেসের মতো এখানে কোনো অ্যাডমিন অতীত কোনো রেকর্ড মুছে বা পরিবর্তন করতে পারে না।'
+      },
+      {
+        en: 'Step 1 - Cryptographic Hashing (SHA-256): Every block contains a block header, a list of validated transactions, a timestamp, a nonce value, and the unique cryptographic hash of the previous block. If anyone attempts to tamper with a transaction in block #100, its hash changes, instantly breaking the cryptographic link to block #101 and alerting every node on the network.',
+        bn: 'ধাপ ১ - ক্রিপ্টোগ্রাফিক হ্যাকিং (SHA-256): প্রতিটি ব্লকে থাকে ব্লক হেডার, অনুমোদিত ট্রানজেকশনের তালিকা, টাইমস্ট্যাম্প এবং পূর্ববর্তী ব্লকের হ্যাশ কোড। যদি কেউ ১০০ নম্বর ব্লকের কোনো একটি তথ্যও পরিবর্তন করার চেষ্টা করে, তবে তার হ্যাশ কোড বদলে যায় এবং পরের ১০১ নম্বর ব্লকের সাথে লিঙ্ক ভেঙে গিয়ে পুরো নেটওয়ার্কে অ্যালার্ম সৃষ্টি হয়।'
+      },
+      {
+        en: 'Step 2 - Consensus Protocols (PoW vs PoS): To agree on the single valid state of the ledger without a central authority, blockchains use consensus algorithms. Bitcoin uses Proof-of-Work (PoW), where miners solve energy-intensive mathematical puzzles. Modern blockchains like Ethereum, Polygon, and Solana use Proof-of-Stake (PoS), where validators stake native tokens as economic collateral.',
+        bn: 'ধাপ ২ - কনসেনসাস প্রোটোকল (PoW বনাম PoS): কোনো কেন্দ্রীয় অথরিটি ছাড়াই সঠিক তথ্যে একমত হওয়ার প্রক্রিয়াকে কনসেনসাস বলে। বিটকয়েন প্রুফ-অফ-ওয়ার্ক (PoW) গাণিতিক মাইনিং ধাঁধা ব্যবহার করে। অন্যদিকে ইথেরিয়াম, পলিগন এবং সোলানার মতো আধুনিক চেইন প্রুফ-অফ-স্টেক (PoS) ভ্যালিডেটর স্ট্যাকিং ব্যবহার করে।'
+      },
+      {
+        en: 'Step 3 - Decentralized Verification & Fault Tolerance: Because thousands of independent nodes validate every transaction against protocol consensus rules, a blockchain continues operating seamlessly even if half the network goes offline or encounters regional power outages.',
+        bn: 'ধাপ ৩ - বিকেন্দ্রীকৃত যাচাইকরণ ও ফল্ট টলারেন্স: যেহেতু হাজার হাজার স্বাধীন নোড প্রতিটি লেনদেন স্বয়ংক্রিয়ভাবে যাচাই করে, তাই নেটওয়ার্কের একটি বড় অংশ অফলাইনে চলে গেলেও মূল ব্লকচেইন সম্পূর্ণ নিরাপদ ও সচল থাকে।'
+      },
+      {
+        en: 'Practical Utility for Global Finance: Immutable ledgers eliminate the need for costly clearinghouses, financial audit delays, and double-spending fraud. They provide absolute transparency for peer-to-peer value transfer worldwide.',
+        bn: 'বৈশ্বিক অর্থনীতিতে বাস্তব উপযোগিতা: ব্লকচেইনের পরিবর্তনহীনতা লেনদেনের দ্বিগুণ খরচের ঝুঁকি (Double-Spending) সম্পূর্ণ বন্ধ করে এবং অডিট করার ঝামেলা দূর করে বিশ্বজুড়ে নিরাপদ লেনদেনের বিপ্লব ঘটিয়েছে।'
+      }
+    ]
+  },
+  {
+    id: 'step-3-wallets',
+    titleEn: 'Step 3: Crypto Wallets & Cryptographic Identity: Non-Custodial Vaults',
+    titleBn: 'ধাপ ৩: ক্রিপ্টো ওয়ালেট এবং ক্রিপ্টোগ্রাফিক পরিচয়: নন-কাস্টডিয়াল ভল্ট',
+    shortDescriptionEn: 'Mastering public-private key cryptography, 12-to-24 word seed phrases, hardware security, and non-custodial asset protection.',
+    shortDescriptionBn: 'পাবলিক-প্রাইভেট কী, ১২ থেকে ২৪ শব্দের গোপন সিড ফ্রেজ এবং হার্ডওয়্যার ওয়ালেটের সাহায্যে নিজস্ব তহবিল শতভাগ নিরাপদ রাখার উপায়।',
+    category: 'Core Web3 Syllabus',
+    iconName: 'Shield',
+    interactiveType: 'p2p-safety',
+    paragraphs: [
+      {
+        en: 'A common misconception among Web3 beginners is that crypto wallets "store" coins inside the mobile application. In reality, your coins remain permanently on the public blockchain; your wallet software simply stores the secret cryptographic keys that give you signature authority to transfer those assets.',
+        bn: 'নতুনদের একটি বড় ভুল ধারণা হলো অ্যাপের ভেতরেই বুঝি ডলার বা কয়েন জমা থাকে। প্রকৃতপক্ষে আপনার সকল ফান্ড ব্লকচেইনেই থাকে; ওয়ালেট সফটওয়্যার কেবল আপনার গোপন ক্রিপ্টোগ্রাফিক প্রাইভেট কী সংরক্ষণ করে যা দিয়ে আপনি ওই ফান্ড পাঠানোর স্বাক্ষর দিতে পারেন।'
+      },
+      {
+        en: 'Step 1 - Asymmetric Keypair Cryptography & BIP-39 Seed Phrases: When you create a non-custodial wallet (such as Bitcoin.com Wallet, MetaMask, or Trust Wallet), the software generates a 12 or 24-word Secret Recovery Phrase using BIP-39 standards. From this seed phrase, millions of public addresses and corresponding private keys are deterministically calculated.',
+        bn: 'ধাপ ১ - অ্যাসিমেট্রিক কী এবং ১২-২৪ শব্দের ব্যাকআপ ফ্রেজ: আপনি যখন ট্রাস্ট ওয়ালেট বা বিটকয়েন.কম ওয়ালেট খুলবেন, সেটি আপনাকে ১২ বা ২৪ শব্দের একটি সিক্রেট রিকভারি ফ্রেজ দেবে। এই ১২টি শব্দই হলো আপনার মূল চাবি।'
+      },
+      {
+        en: 'Step 2 - Custodial Exchanges vs Non-Custodial Sovereign Vaults: Centralized exchanges (CEXs) manage private keys on your behalf. If the exchange suffers insolvency, hacks, or freezes user withdrawals, you lose access to your funds ("Not your keys, not your coins"). Non-custodial wallets give you 100% direct control and absolute responsibility.',
+        bn: 'ধাপ ২ - কাস্টডিয়াল বনাম নন-কাস্টডিয়াল ওয়ালেট: সেন্ট্রাল এক্সচেঞ্জগুলো আপনার হয়ে প্রাইভেট কী নিয়ন্ত্রণ করে। ফলে এক্সচেঞ্জ দেউলিয়া হলে আপনার ফান্ড আটকে যায় ("Not your keys, not your coins")। আর নন-কাস্টডিয়াল ওয়ালেটে আপনি নিজেই নিজের ফান্ডের একমাত্র স্বত্বাধিকারী।'
+      },
+      {
+        en: 'Step 3 - Physical Backup Rules & Threat Protection: Never type your seed phrase into websites, never store screenshots in cloud storage or social messaging, and never share keys with fake support representatives. Always write your 12 words physically on durable paper or steel backup plates stored in secure offline locations.',
+        bn: 'ধাপ ৩ - ফিজিক্যাল ব্যাকআপ নেওয়ার নিয়ম: কখনোই সিড ফ্রেজের স্ক্রিনশট ড্রাইভে রাখবেন না, কোনো গুগল ফর্মে ইনপুট দেবেন না এবং কোনো চ্যাট সাপোর্টে কারো সাথে শেয়ার করবেন না। সিড ফ্রেজ কাগজে লিখে নিরাপদ ফিজিক্যাল স্থানে লুকিয়ে রাখুন।'
+      },
+      {
+        en: 'Safeguarding Communities in Bangladesh: By mastering seed phrase security protocols, users in Bangladesh can protect themselves against rampant Telegram admin phishing scams and malicious Google Ad malware drainers.',
+        bn: 'বাংলাদেশের ব্যবহারকারীদের জন্য বিশেষ সুরক্ষা: সঠিক সিড ফ্রেজ ব্যবহারের নিয়ম শিখলে আমাদের দেশের তরুণেরা টেলিগ্রাম স্ক্যামার ও ভুয়া অ্যাপ থেকে নিজেদের কষ্টার্জিত ফান্ড শতভাগ রক্ষা করতে পারবে।'
+      }
+    ]
+  },
+  {
+    id: 'step-4-cryptocurrencies',
+    titleEn: 'Step 4: Cryptocurrencies, Tokens & Gas Economics: Utility & Network Value',
+    titleBn: 'ধাপ ৪: ক্রিপ্টোকারেন্সি, টোকেন ও গ্যাস ইকোনমিক্স: উপযোগিতা এবং নেটওয়ার্ক ভ্যালু',
+    shortDescriptionEn: 'Differentiating native Layer-1 coins from smart contract ERC-20 tokens, utility assets, and transaction gas fee mechanics.',
+    shortDescriptionBn: 'লেয়ার-১ নেটিভ কয়েন বনাম স্মার্ট কন্ট্রাক্ট টোকেন, ইউটিলিটি এসেট এবং গ্যাস ফি বা ট্রানজেকশন ফি এর অভ্যন্তরীণ গাণিতিক হিসাব।',
+    category: 'Core Web3 Syllabus',
+    iconName: 'Coins',
+    interactiveType: 'tokens',
+    paragraphs: [
+      {
+        en: 'Understanding the architectural distinction between native cryptocurrencies and standard tokens is crucial for navigating Web3. Native coins (like BTC on Bitcoin, ETH on Ethereum, or SOL on Solana) operate as the foundational blood supply of their respective Layer-1 blockchains, paying node validators for block production.',
+        bn: 'নেটিভ ক্রিপ্টোকারেন্সি এবং স্ট্যান্ডার্ড টোকেনের পার্থক্য বোঝা অত্যন্ত জরুরি। নেটিভ কয়েন (যেমন ইথেরিয়ামের ETH বা পলিগনের MATIC/POL) মূলত মূল ব্লকচেইনের জ্বালানি হিসেবে কাজ করে এবং ভ্যালিডেটরদের ফি পরিশোধ করতে ব্যবহৃত হয়।'
+      },
+      {
+        en: 'Step 1 - Smart Contract Tokens (ERC-20, SPL, BEP-20): Tokens (such as VERSE, USDT, or LINK) do not possess their own independent blockchain. Instead, they exist as programmable smart contract ledger state balances deployed on existing Layer-1 or Layer-2 EVM networks.',
+        bn: 'ধাপ ১ - স্মার্ট কন্ট্রাক্ট টোকেন (ERC-20, BEP-20): টোকেনগুলোর (যেমন VERSE বা USDT) নিজস্ব আলাদা ব্লকচেইন থাকে না। তারা অন্য কোনো পাবলিক ইথেরিয়াম বা পলিগন নেটওয়ার্কের ওপর নির্মিত স্মার্ট কন্ট্রাক্ট দ্বারা পরিচালিত হয়।'
+      },
+      {
+        en: 'Step 2 - Tokenomics & Supply Dynamics: Key valuation metrics include Total Supply, Circulating Supply, Hard Caps, and Token Burn mechanisms. Deflationary tokens burn supply over time, whereas inflationary tokens issue staking rewards according to pre-programmed algorithmic schedules.',
+        bn: 'ধাপ ২ - টোকেনোমিক্স ও সাপ্লাই ডায়নামিক্স: যেকোনো প্রজেক্ট মূল্যায়নের প্রধান সূচক হলো মোট সরবরাহ, সার্কুলেটিং সাপ্লাই এবং টোকেন বার্নিং মেকানিজম। নিয়মিত টোকেন বার্ন করা প্রজেক্টগুলো দীর্ঘমেয়াদে মূল্য ধরে রাখতে সক্ষম।'
+      },
+      {
+        en: 'Step 3 - Gas Fee Mechanics (Gas Limit x Gas Price): Every state transition on an EVM blockchain consumes computational units called "Gas". Gas fees prevent malicious actors from spamming the network with infinite loops and ensure node operators are compensated for processing transactions.',
+        bn: 'ধাপ ৩ - গ্যাস ফি এর হিসাব (Gas Limit x Gas Price): ব্লকচেইনে যেকোনো ট্রানজেকশন প্রসেস করার জন্য কম্পিউটেশনাল ফি দিতে হয় যাকে "গ্যাস ফি" বলা হয়। গ্যাস ফি প্রসেসিং স্প্যাম বা হ্যাকিং ব্লক করে নেটওয়ার্ক সচল রাখে।'
+      },
+      {
+        en: 'VERSE Token Utility within Bitcoin.com: VERSE is a utility token deployed on Ethereum and Polygon. It incentivizes ecosystem participation, powers liquidity pools on Verse DEX, enables cash-back rewards, and grants community access.',
+        bn: 'বিটকয়েন.কম ইকোসিস্টেমে ভার্স টোকেনের উপযোগিতা: ভার্স (VERSE) হলো একটি মাল্টি-চেইন ইউটিলিটি টোকেন। এটি ভার্স ডেক্স (Verse DEX) লিকুইডিটি পুল, ক্যাশব্যাক রিওয়ার্ড এবং সোশ্যাল ইকোসিস্টেম রিওয়ার্ড হিসেবে ব্যবহৃত হয়।'
+      }
+    ]
+  },
+  {
+    id: 'step-5-nfts',
+    titleEn: 'Step 5: NFTs & Digital Assets: Provenance, Scarcity & Verse Voyagers',
+    titleBn: 'ধাপ ৫: এনএফটি এবং ডিজিটাল সম্পদ: প্রোভেন্যান্স, দুর্লভতা এবং ভার্স ভয়েজার্স',
+    shortDescriptionEn: 'Understanding ERC-721 and ERC-1155 standards, digital scarcity, cryptographic ownership verification, and utility NFTs.',
+    shortDescriptionBn: 'ERC-721 এনএফটি স্ট্যান্ডার্ড, ডিজিটাল দুর্লভতা, ক্রিপ্টোগ্রাফিক মালিকানা প্রমাণ এবং প্র্যাকটিক্যাল ইউটিলিটি এনএফটি বোঝার নির্দেশিকা।',
+    category: 'Core Web3 Syllabus',
+    iconName: 'Sparkles',
+    interactiveType: 'verse-guide',
+    paragraphs: [
+      {
+        en: 'Fungible tokens (like 1 Bitcoin or 1 Dollar) are completely interchangeable with one another. Non-Fungible Tokens (NFTs), governed by standards like ERC-721 and ERC-1155, represent completely unique, non-interchangeable digital assets backed by cryptographic proof on public ledgers.',
+        bn: 'ফাঞ্জিবল টোকেন (যেমন ১ ডলার বা ১ বিটকয়েন) সবসময় সমমানের অন্যটির সাথে বিনিময়যোগ্য। কিন্তু নন-ফাঞ্জিবল টোকেন বা এনএফটি (NFT) হলো সম্পূর্ণ অনন্য বা ইউনিক ডিজিটাল সম্পদ, যার মালিকানা ব্লকচেইনে স্থায়ীভাবে প্রমাণিত থাকে।'
+      },
+      {
+        en: 'Step 1 - On-Chain Provenance & Metadata Pointer Verification: An NFT consists of an on-chain Token ID linked to a smart contract address. The contract points to a metadata file (stored on decentralized IPFS or Arweave) containing the asset attributes, high-resolution artwork, or digital license rights.',
+        bn: 'ধাপ ১ - অন-চেইন প্রোভেন্যান্স ও মেটাডেটা লিঙ্ক: প্রতিটি এনএফটির একটি ইউনিক টোকেন আইডি থাকে যা স্মার্ট কন্ট্রাক্টের মাধ্যমে আইপিএফএস (IPFS) বা ডিসেন্ট্রালাইজড সার্ভারে স্থায়ী মেটাডেটা ফাইলের সাথে সংযুক্ত থাকে।'
+      },
+      {
+        en: 'Step 2 - Authentic Digital Scarcity & Creator Royalties: Before blockchain technology, digital files could be infinitely copied without lost fidelity. NFTs enforce mathematical digital scarcity. Furthermore, smart contracts enforce automated royalty distributions to original artists whenever an NFT is resold.',
+        bn: 'ধাপ ২ - খাঁটি ডিজিটাল দুর্লভতা ও অটোমেটেড রয়্যালটি: ক্রিপ্টো আসার আগে ডিজিটাল ফাইল সহজেই কপি করা যেত। এনএফটি ডিজিটাল দুর্লভতা তৈরি করে। পাশাপাশি প্রতিবার এনএফটি বিক্রি হলে মূল সৃষ্টিকর্তা স্বয়ংক্রিয়ভাবে রয়্যালটি ফি পান।'
+      },
+      {
+        en: 'Step 3 - Utility NFTs & Digital Membership: Modern NFTs extend far beyond digital art. They act as token-gated membership keys to exclusive communities, digital real estate deeds, gaming assets, software access passes, and identity badges.',
+        bn: 'ধাপ ৩ - ইউটিলিটি এনএফটি ও সদস্যপদ: বর্তমান এনএফটি কেবল ছবির মধ্যে সীমাবদ্ধ নয়। এটি বিশেষ কমিউনিটির মেম্বারশিপ পাস, গেমিং সম্পদ, ডিজিটাল রিয়েল এস্টেট এবং সার্টিফিকেট হিসেবে ব্যবহৃত হয়।'
+      },
+      {
+        en: 'Verse Voyagers & Digital Community Badges: In the Verse ecosystem, specialized NFT collections like Verse Voyagers grant holders exclusive staking yield boosts, VIP forum access, and reduced trading fees on the Verse DEX.',
+        bn: 'ভার্স ভয়েজার্স ও কমিউনিটি মেম্বারশিপ: ভার্স ইকোসিস্টেমে "ভার্স ভয়েজার্স" (Verse Voyagers) নামক বিশেষ এনএফটি মেম্বারশিপ এনএফটি হোল্ডারদের স্ট্যাকিং বোনাস, ট্রেডিং ফি ছাড় এবং উইআইপি মেম্বারশিপ সুবিধা প্রদান করে।'
+      }
+    ]
+  },
+  {
+    id: 'step-6-defi',
+    titleEn: 'Step 6: DeFi Protocols & Verse DEX: Liquidity Pools & Automated Market Makers',
+    titleBn: 'ধাপ ৬: ডিফাই প্রোটোকল এবং ভার্স ডেক্স: লিকুইডিটি পুল এবং অটোমেটেড মার্কেট মেকার',
+    shortDescriptionEn: 'A comprehensive guide to decentralized exchanges (DEXs), Constant Product Formula (x * y = k), yield farming, and liquidity pools.',
+    shortDescriptionBn: 'বিকেন্দ্রীকৃত এক্সচেঞ্জ (DEX), অটোমেটেড মার্কেট মেকার অ্যালগরিদম (x * y = k), লিকুইডিটি পুল এবং ইয়েল্ড ফার্মিং-এর সম্পূর্ণ সহায়িকা।',
+    category: 'Core Web3 Syllabus',
+    iconName: 'TrendingUp',
+    interactiveType: 'calculator',
+    paragraphs: [
+      {
+        en: 'Decentralized Finance (DeFi) reconstructs traditional banking services—currency exchange, lending, borrowing, derivatives, and asset management—onto open, permissionless smart contract protocols running 24/7 without centralized intermediary banks.',
+        bn: 'ডিসেন্ট্রালাইজড ফাইন্যান্স (DeFi) প্রচলিত সমস্ত ব্যাংক ও আর্থিক ব্যবস্থা—যেমন কারেন্সি এক্সচেঞ্জ, ঋণ দেওয়া ও নেওয়া, সুদের হিসাব—কোনো ব্যাংক কর্মকর্তা ছাড়াই সম্পূর্ণ অটোমেটেড স্মার্ট কন্ট্রাক্টের মাধ্যমে সচল রাখে।'
+      },
+      {
+        en: 'Step 1 - Automated Market Makers (AMMs) & Constant Product Math: Traditional exchanges rely on order books matching buyers and sellers. DeFi DEXs (like Verse DEX or Uniswap) use Liquidity Pools governed by the Constant Product Formula: x * y = k (where x and y represent token reserves, and k is a constant pool invariant).',
+        bn: 'ধাপ ১ - অটোমেটেড মার্কেট মেকার (AMM) গাণিতিক সূত্র: প্রথাগত অর্ডারের বদলে ডেক্স প্রোটোকলগুলো লিকুইডিটি পুল এবং গাণিতিক সূত্র x * y = k ব্যবহার করে স্বয়ংক্রিয়ভাবে যেকোনো টোকেন অদলবদল সম্পন্ন করে।'
+      },
+      {
+        en: 'Step 2 - Liquidity Provision & Yield Generation: Anyone can become a Liquidity Provider (LP) by depositing equal USD values of two tokens into a pool. In return, LPs receive LP tokens and earn proportional shares of every 0.3% trading fee generated by traders swapping through that pool.',
+        bn: 'ধাপ ২ - লিকুইডিটি যোগ করা ও আয়ের উপায়: যেকোনো মানুষ লিকুইডিটি প্রোভাইডার (LP) হিসেবে পুলে টোকেন জমা রেখে সেখান থেকে সংঘটিত প্রতিটি লেনদেনের ০.৩% সার্ভিস ফি লাভ হিসেবে আয় করতে পারেন।'
+      },
+      {
+        en: 'Step 3 - Impermanent Loss & Risk Management: When token prices diverge significantly after being deposited into an LP pool, providers experience "Impermanent Loss" compared to simply holding the tokens in a cold wallet. High volume trading fees and farm rewards help offset this structural risk.',
+        bn: 'ধাপ ৩ - ইম্পারমানেন্ট লস বা সাময়িক লোকসানের ঝুঁকি: পুলে থাকা দুই টোকেনের দাম যদি একদিকে হঠাৎ বিশাল পরিবর্তন হয়, তবে কিছুটা ক্ষতি হতে পারে যাকে ইম্পারমানেন্ট লস বলে। পর্যাপ্ত ট্রেডিং ফি এই ক্ষতি পুষিয়ে দেয়।'
+      },
+      {
+        en: 'Verse DEX Non-Custodial Architecture: Verse DEX provides ultra-low fee swaps across Ethereum and Polygon networks. Users retain 100% custody of their private keys at all times during trade executions directly from their wallet.',
+        bn: 'ভার্স ডেক্স-এর নিরাপদ বিকেন্দ্রীকৃত ট্রেডিং: ভার্স ডেক্স (Verse DEX) দিয়ে ব্যবহারকারীরা তাদের ট্রাস্ট ওয়ালেট বা মেটামাস্ক থেকে সরাসরি নিজের নিয়ন্ত্রণ রেখে নিরাপদ ও কম খরচে যেকোনো টোকেন অদলবদল করতে পারেন।'
+      }
+    ]
+  },
+  {
+    id: 'step-7-daos',
+    titleEn: 'Step 7: DAOs & Decentralized Governance: Internet-Native Cooperatives',
+    titleBn: 'ধাপ ৭: ডিএও এবং বিকেন্দ্রীকৃত গভর্ন্যান্স: ইন্টারনেট-নেটিভ সমবায় সমিতি',
+    shortDescriptionEn: 'Exploring Decentralized Autonomous Organizations, token-weighted voting, smart contract treasuries, and community governance.',
+    shortDescriptionBn: 'ডিএও (DAO) বা ইন্টারনেটভিত্তিক স্বাধীন সমবায়, টোকেন ভোটিং, স্মার্ট কন্ট্রাক্ট ট্রেজারি ফান্ড এবং কমিউনিটি পরিচালনার মূলনীতি।',
+    category: 'Core Web3 Syllabus',
+    iconName: 'Users',
+    interactiveType: 'web-compare',
+    paragraphs: [
+      {
+        en: 'A Decentralized Autonomous Organization (DAO) is a transparency-first, internet-native entity governed directly by its community members through smart contracts. Unlike traditional corporate structures dominated by executive boards, DAOs distribute decision-making power across token holders globally.',
+        bn: 'একটি ডিসেন্ট্রালাইজড স্বায়ত্তশাসিত সংস্থা বা ডিএও (DAO) হলো ইন্টারনেট-চালিত একটি বিশ্বব্যাপী ডিজিটাল সমবায় সমিতি। এখানে কোনো সিইও বা একক মালিক থাকে না; সমস্ত বড় সিদ্ধান্ত সদস্যরা ভোটের মাধ্যমে গ্রহণ করেন।'
+      },
+      {
+        en: 'Step 1 - Proposal Submission & On-Chain Voting: Any member holding native governance tokens can submit a Improvement Proposal. Members cast cryptographic votes directly from their wallets, and if a proposal passes quorum requirements, the smart contract automatically executes the changes.',
+        bn: 'ধাপ ১ - প্রস্তাবনা জমাদান ও অন-চেইন ভোটিং: গভর্নেন্স টোকেন হোল্ডাররা প্ল্যাটফর্মের উন্নয়নে প্রস্তাব পেশ করেন। সদস্যরা নিজেদের ওয়ালেট থেকে সরাসরি ভোট দেন এবং পর্যাপ্ত ভোট পেলে কোড স্বয়ংক্রিয়ভাবে পাস হয়ে যায়।'
+      },
+      {
+        en: 'Step 2 - Token-Weighted vs Quadratic Governance Voting: Standard DAOs use 1-token-1-vote weighting. Advanced DAOs implement Quadratic Voting to prevent mega-whales from outvoting thousands of active community members, ensuring broader democratic representation.',
+        bn: 'ধাপ ২ - গাণিতিক কোয়াড্রাটিক ভোটিং সুবিধা: বড় বড় ধনী বিনিয়োগকারীরা যাতে সাধারণ মানুষের ওপর একক আধিপত্য বিস্তার করতে না পারে, সেজন্য কোয়াড্রাটিক ভোটিং মডেল ব্যবহার করে সংখ্যাগরিষ্ঠের মতকে সম্মান জানানো হয়।'
+      },
+      {
+        en: 'Step 3 - Multi-Signature (Multisig) Treasury Vaults: DAO community treasuries are locked inside multi-signature smart contracts (e.g., Gnosis Safe). Spending treasury funds requires multiple cryptographic sign-offs from elected community custodians, preventing rogue spending.',
+        bn: 'ধাপ ৩ - মাল্টি-সিগনেচার ট্রেজারি নিরাপত্তা: ডিএও-র ফান্ডগুলো কোনো একজনের পকেটে থাকে না। ফান্ড খরচ করতে হলে একাধিক ভেরিফাইড দায়িত্বশীল সাইনারের সম্মতি প্রয়োজন হয় যা জালিয়াতি শতভাগ রোধ করে।'
+      },
+      {
+        en: 'Decentralized Opportunities for Bangladeshi Builders: DAOs enable talented coders, designers, and marketers in Bangladesh to join global Web3 working groups, contribute to international projects, and earn transparent compensation directly into non-custodial wallets.',
+        bn: 'বাংলাদেশের আইটি সেক্টরের জন্য অপার সম্ভাবনা: ডিএও ব্যবস্থার ফলে বাংলাদেশের তরুণ ডেভেলপার ও ডিজাইনাররা কোনো ভিসা বা পাসপোর্ট ঝামেলা ছাড়াই গ্লোবাল টিমে যোগ দিয়ে সরাসরি আয় করতে পারছেন।'
+      }
+    ]
+  },
+  {
+    id: 'step-8-security',
+    titleEn: 'Step 8: Web3 Security Shield & Anti-Fraud Masterclass',
+    titleBn: 'ধাপ ৮: ওয়েব৩ সিকিউরিটি শিল্ড এবং অ্যান্টি-ফ্রড মাস্টারক্লাস',
+    shortDescriptionEn: 'A complete defensive blueprint against MLM schemes, phishing attacks, malicious smart contract approvals, and fraudulent investment sites.',
+    shortDescriptionBn: 'এমএলএম ও পঞ্জি স্কিম, ফিশিং সাইট, ক্ষতিকর স্মার্ট কন্ট্রাক্ট অ্যাপ্রুভাল এবং স্ক্যামারদের হাত থেকে স্থায়ী সুরক্ষার সম্পূর্ণ মাস্টারক্লাস।',
+    category: 'Core Web3 Syllabus',
+    iconName: 'ShieldAlert',
+    interactiveType: 'checklist',
+    paragraphs: [
+      {
+        en: 'Because transactions on public blockchains are final and irreversible, cybersecurity vigilance is your primary defense line in Web3. In a non-custodial world, you are your own security officer. Understanding common fraud mechanisms ensures your hard-earned wealth remains immune to exploits.',
+        bn: 'যেহেতু ব্লকচেইনে একবার ভুল পেমেন্ট বা স্ক্যামারের কাছে টাকা পাঠালে তা আর কখনো ফেরত আনা সম্ভব নয়, তাই সচেতনতাই আপনার সবচেয়ে বড় অস্ত্র। নন-কাস্টডিয়াল জগতে আপনার অ্যাকাউন্টের সিকিউরিটি অফিসার আপনি নিজেই।'
+      },
+      {
+        en: 'Step 1 - Identifying Fraudulent MLM & Ponzi Schemes: Any project promising guaranteed daily/monthly percentage returns (e.g. "2% daily ROI") or requiring mandatory recruitment downlines is mathematically guaranteed to be a fraudulent Ponzi trap destined to collapse.',
+        bn: 'ধাপ ১ - ভুয়া এমএলএম ও পঞ্জি স্কিম চেনার উপায়: যেকোনো সাইট যা প্রতিদিন বা মাসে নির্দিষ্ট ফিক্সড পার্সেন্টেজ আয়ের গ্যারান্টি দেবে কিংবা নতুন সদস্য ঢুকিয়ে ডলার তোলার ফাঁদ তৈরি করবে, তা শতভাগ ভুয়া ও স্ক্যাম।'
+      },
+      {
+        en: 'Step 2 - Countering Phishing Ads & Fake Telegram Admins: Scammers purchase Google Search Ads leading to cloned wallet drainer websites or impersonate official customer support admins on Telegram. Official protocols will NEVER send direct messages asking for seed phrases or private keys.',
+        bn: 'ধাপ ২ - ফিশিং সাইট ও ভুয়া টেলিগ্রাম এডমিন প্রতিরোধ: স্ক্যামাররা গুগলে ভুয়া বিজ্ঞাপন দিয়ে ক্লোন ওয়েবসাইট তৈরি করে অথবা টেলিগ্রামে এডমিন সেজে সিড ফ্রেজ চুরি করতে চায়। কোনো আসল এডমিন কখনো আপনার প্রাইভেট সিড ফ্রেজ চাইবে না।'
+      },
+      {
+        en: 'Step 3 - Auditing Smart Contract Token Allowances: When interacting with new dApps, never authorize "Unlimited Approval" allowances for unknown tokens. Periodically review and revoke active smart contract permissions using verified audit tools like Revoke.cash.',
+        bn: 'ধাপ ৩ - অনাকাঙ্ক্ষিত স্মার্ট কন্ট্রাক্ট অ্যাপ্রুভাল বাতিল: অপরিচিত কোনো ওয়েবসাইটে ওয়ালেট কানেক্ট করে আনলিমিটেড অ্যাপ্রুভাল দেওয়া থেকে বিরত থাকুন। নিয়মিত Revoke.cash এর মতো অডিট সাইট দিয়ে পুরাতন পারমিশন ব্লক করে দিন।'
+      },
+      {
+        en: 'Verse Community Security Guardrails: The Verse community maintains active scam reporting channels in South Asia, warning Bangladeshi citizens against suspicious MFS money collector networks and promoting clean, verified Web3 education.',
+        bn: 'ভার্স প্রজেক্টের নিরাপত্তা সতর্কতা: ভার্স কমিউনিটি প্রতিনিয়ত ভুয়া টেলিগ্রাম গ্রুপ ও বিকাশ/নগদ ডিপোজিট নেওয়া প্রতারকদের কালো তালিকা প্রকাশ করে সাধারণ মানুষকে নিরাপদ রাখছে।'
+      }
+    ]
+  },
+  {
+    id: 'step-9-verse-ecosystem',
+    titleEn: 'Step 9: The Verse Ecosystem & Tokenomics: Bitcoin.com Backbone',
+    titleBn: 'ধাপ ৯: ভার্স ইকোসিস্টেম ও টোকেনোমিক্স: বিটকয়েন.কম-এর মূল স্তম্ভ',
+    shortDescriptionEn: 'Exploring the history, token distribution, cross-chain utility, DEX integration, and community rewards of the Verse ecosystem.',
+    shortDescriptionBn: 'ভার্স ইকোসিস্টেমের ইতিহাস, টোকেন বন্টন, মাল্টি-চেইন উপযোগিতা, ডেক্স সংযোগ এবং কমিউনিটি রিওয়ার্ড-এর সম্পূর্ণ আলোচনা।',
+    category: 'Core Web3 Syllabus',
+    iconName: 'Compass',
+    interactiveType: 'verse-guide',
+    paragraphs: [
+      {
+        en: 'Launched by Bitcoin.com—a legendary cryptocurrency organization providing non-custodial wallet services to over 40 million users worldwide—the Verse ecosystem was designed to accelerate global transition to economic freedom through intuitive, non-custodial tools.',
+        bn: 'বিটকয়েন.কম (Bitcoin.com) দ্বারা পরিচালিত—যা বিশ্বজুড়ে ৪ কোটি ব্যবহারকারীকে ওয়ালেট সেবা দিয়ে আসছে—ভার্স (Verse) ইকোসিস্টেম মূলত সাধারণ মানুষকে কোনো জটিলতা ছাড়াই ওয়েব৩-এর স্বাধীনতার সাথে পরিচয় করিয়ে দিতে প্রবর্তিত।'
+      },
+      {
+        en: 'Step 1 - VERSE Token Supply & Transparent Allocation: VERSE has a fixed hard cap of 210 billion tokens distributed over a 7-year linear vesting schedule. 35% is allocated to Ecosystem Incentives & Yield Farming, 34% to Development Reserves, 16% to Sale Partners, and 15% to Team.',
+        bn: 'ধাপ ১ - ভার্স টোকেন সরবরাহ ও স্বচ্ছ বণ্টন: ভার্স (VERSE) টোকেনের মোট সরবরাহ ২১০ বিলিয়ন। যার ৩৫% সরাসরি ইকোসিস্টেম ও ইউজার ফার্মিং রিওয়ার্ড, ৩৪% প্রজেক্ট ডেভেলপমেন্ট এবং অবশিষ্ট টোকেন ৭ বছরের সুনির্দিষ্ট ভেস্টিং নিয়মে লক করা রয়েছে।'
+      },
+      {
+        en: 'Step 2 - Multi-Chain EVM Deployment: VERSE operates seamlessly across both Ethereum Mainnet (for institutional settlement and maximum security) and Polygon Layer-2 (for ultra-fast, sub-cent microtransactions and DEX swaps).',
+        bn: 'ধাপ ২ - মাল্টি-চেইন ইভিএম সাপোর্ট: ভার্স টোকেন ইথেরিয়াম মেইননেট এবং পলিগন (Polygon) উভয় চেইনে কাজ করে। এর ফলে মাত্র কয়েক পয়সা গ্যাসে খুব দ্রুত লেনদেন ও ট্রেডিং সম্পন্ন করা যায়।'
+      },
+      {
+        en: 'Step 3 - Core Products: Verse DEX, Verse Staking & Gamified Cashbacks: Verse features native decentralized products including Verse DEX (for non-custodial swaps), Verse Staking (for earning passive rewards), and Verse Lounge (for governance discussions).',
+        bn: 'ধাপ ৩ - মূল পণ্যসমূহ: ভার্স ডেক্স, স্ট্যাকিং ও গ্যামিফাইড রিওয়ার্ডস: ভার্স ইকোসিস্টেমে রয়েছে নিজস্ব ভার্স ডেক্স (Verse DEX), নিরাপদ স্ট্যাকিং পুল এবং সামাজিক মেম্বারশিপ লাউঞ্জ।'
+      },
+      {
+        en: 'Pioneering Clean Organic Growth in Bangladesh: Verse is widely respected across Bangladesh for building an organic, educational-first community that rejects fake paid shills and focuses on empowering local developers and enthusiasts.',
+        bn: 'বাংলাদেশে সচেতনতা বৃদ্ধিতে ভার্স: ভুয়া প্রমোশন ও পেইড সিগন্যাল গ্রুপের বিপরীতে ভার্স বাংলাদেশে সততা, সঠিক গাইডলাইন এবং বিনামূল্যে ওয়েব৩ শেখার সেরা বিশ্বস্ত প্ল্যাটফর্ম হিসেবে পরিচিত।'
+      }
+    ]
+  },
+  {
+    id: 'step-10-verse-hub',
+    titleEn: 'Step 10: Verse Hub Onboarding, Staking & Web3 Community Guide',
+    titleBn: 'ধাপ ১০: ভার্স হাব অনবোর্ডিং, স্ট্যাকিং এবং ওয়েব৩ কমিউনিটি গাইড',
+    shortDescriptionEn: 'Step-by-step operational guide to connecting wallets to Verse Hub, participating in staking pools, earning rewards, and joining community channels.',
+    shortDescriptionBn: 'ভার্স হাবে ওয়ালেট কানেক্ট করা, স্ট্যাকিং পুলে অংশগ্রহণ, রিওয়ার্ড জমানো এবং আমাদের অফিশিয়াল কমিউনিটিতে যুক্ত হওয়ার পূর্ণ গাইড।',
+    category: 'Core Web3 Syllabus',
+    iconName: 'Award',
+    interactiveType: 'p2p-safety',
+    paragraphs: [
+      {
+        en: 'The Verse Hub serves as the ultimate interactive nexus for the Verse ecosystem. Here, users can track their syllabus mastery progress, participate in non-custodial staking pools, complete quest achievements, and interact with the global community.',
+        bn: 'ভার্স হাব (Verse Hub) হলো সমগ্র ইকোসিস্টেমের সেন্ট্রাল ড্যাশবোর্ড। এখান থেকে ব্যবহারকারীরা তাদের শেখার অগ্রগতি দেখতে পারেন, স্ট্যাকিং পুলে অংশ নিতে পারেন এবং অনলাইন রিওয়ার্ড সংগ্রহ করতে পারেন।'
+      },
+      {
+        en: 'Step 1 - Wallet Connection & Verification Protocol: To access Verse Hub features, open your Web3 non-custodial wallet (Bitcoin.com Wallet, MetaMask, or Trust Wallet), select WalletConnect, and scan the secure connection code. Never input your seed phrase during connection.',
+        bn: 'ধাপ ১ - ওয়ালেট কানেক্ট ও নিরাপত্তা যাচাই: আপনার ট্রাস্ট ওয়ালেট বা বিটকয়েন.কম ওয়ালেট থেকে ওয়ালেট কানেক্ট (WalletConnect) অপশনটি নির্বাচন করে নিরাপদ কিউআর কোড স্ক্যান করে কানেক্ট করুন। ওয়ালেট কানেক্টের সময় কোনো সিড ফ্রেজ লাগে না।'
+      },
+      {
+        en: 'Step 2 - Staking VERSE & Depositing into Liquidity Farms: Navigate to the Staking section within Verse Hub. Select your desired VERSE staking pool, approve the smart contract transaction, and deposit your tokens to begin automatically earning ongoing protocol yield rewards.',
+        bn: 'ধাপ ২ - ভার্স স্ট্যাকিং ও ফার্মিং-এ অংশ নেওয়া: ভার্স হাবের Staking সেকশনে গিয়ে আপনার সুবিধাজনক পুলে টোকেন লক করুন এবং স্বয়ংক্রিয়ভাবে প্রোটোকল রিওয়ার্ড অর্জন শুরু করুন।'
+      },
+      {
+        en: 'Step 3 - Earning Verified Digital Badges & Quest Rewards: By completing all 10 steps of our Core Learning Syllabus, users unlock verified Web3 Certificate badges and qualify for community rewards, exclusive Telegram roles, and DEX fee discounts.',
+        bn: 'ধাপ ৩ - ১০টি ধাপ সম্পন্ন করে ভেরিফাইড ব্যাজ অর্জন: আমাদের কারিকুলামের ১০টি ধাপ সফলভাবে শেষ করলে আপনি অনলাইন লার্নিং ব্যাজ আনলক করবেন যা আপনার ক্রিপ্টো জ্ঞানের এক ঐতিহাসিক মাইলফলক।'
+      },
+      {
+        en: 'Connecting with Telegram Leadership (@stone_brb): Join our official Verse Telegram community to interact directly with verified leaders, participate in weekly Q&A sessions, report local scam attempts, and continue your Web3 journey safely.',
+        bn: 'অফিসিয়াল টেলিগ্রাম টিমের সাথে যোগাযোগ (@stone_brb): যেকোনো পরামর্শ বা সরাসরি গাইডের জন্য আমাদের অফিশিয়াল টেলিগ্রাম গ্রুপে যুক্ত হোন এবং মূল লিডারদের সাথে সরাসরি কথা বলে ক্রিপ্টো যাত্রা সুন্দর করুন।'
+      }
+    ]
+  }
+];
+
 export const ALL_TOPICS: Topic[] = [
+  ...HOMEPAGE_10_TOPICS,
   ...ROW_1_TOPICS,
   ...ROW_2_TOPICS,
   ...ROW_3_TOPICS,
