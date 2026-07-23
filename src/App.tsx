@@ -181,6 +181,9 @@ export default function App() {
                 src="/verse_logo.jpg" 
                 alt="Verse Logo" 
                 className="w-full h-full object-cover rounded-xl" 
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = 'https://i.ibb.co.com/nqHkRw7V/IMG-20260724-011109-166.jpg';
+                }}
               />
             </div>
           </div>
@@ -229,6 +232,9 @@ export default function App() {
                   src="/verse_logo.jpg" 
                   alt="Verse Logo" 
                   className="h-10 w-10 object-cover rounded-lg bg-slate-900 border-0" 
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = 'https://i.ibb.co.com/nqHkRw7V/IMG-20260724-011109-166.jpg';
+                  }}
                 />
               </div>
               <div>
@@ -373,7 +379,14 @@ export default function App() {
                     <div className="absolute inset-0 bg-radial from-purple-500/20 via-cyan-500/10 to-transparent pointer-events-none" />
                     
                     <div className="relative z-10 w-20 h-20 rounded-2xl bg-gradient-to-tr from-cyan-400 via-purple-500 to-indigo-500 p-1 shadow-2xl mb-3 transform group-hover:rotate-3 group-hover:scale-110 transition-all duration-500">
-                      <img src="/verse_logo.jpg" alt="Verse Logo" className="w-full h-full object-cover rounded-xl" />
+                      <img 
+                        src="/verse_logo.jpg" 
+                        alt="Verse Logo" 
+                        className="w-full h-full object-cover rounded-xl" 
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src = 'https://i.ibb.co.com/nqHkRw7V/IMG-20260724-011109-166.jpg';
+                        }}
+                      />
                     </div>
 
                     <h3 className="text-lg font-black text-white uppercase font-mono tracking-wider">
@@ -625,7 +638,14 @@ export default function App() {
             <div className="space-y-3 max-w-md">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl p-0.5 bg-gradient-to-tr from-cyan-400 to-purple-500 shrink-0">
-                  <img src="/verse_logo.jpg" alt="Verse Logo" className="w-full h-full object-cover rounded-lg" />
+                  <img 
+                    src="/verse_logo.jpg" 
+                    alt="Verse Logo" 
+                    className="w-full h-full object-cover rounded-lg" 
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = 'https://i.ibb.co.com/nqHkRw7V/IMG-20260724-011109-166.jpg';
+                    }}
+                  />
                 </div>
                 <h3 className="text-lg font-black font-mono tracking-wider text-white uppercase">
                   VERSE CRYPTO TOKEN HUB

@@ -47,6 +47,9 @@ export default function CommunityTab({ language: _language }: CommunityTabProps)
                 src="/verse_logo.jpg" 
                 alt="Verse Logo" 
                 className="w-full h-full object-cover rounded-full transform group-hover:scale-105 transition duration-500"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = 'https://i.ibb.co.com/nqHkRw7V/IMG-20260724-011109-166.jpg';
+                }}
               />
             </div>
             <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-cyan-500 text-slate-950 font-black text-[10px] tracking-wider uppercase px-3 py-0.5 rounded-full shadow-lg border border-white/20 whitespace-nowrap">
@@ -262,7 +265,14 @@ export default function CommunityTab({ language: _language }: CommunityTabProps)
       <section className="bg-[#0e1635]/90 border border-blue-500/20 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
         <div className="flex items-center gap-3 border-b border-blue-500/20 pb-4">
           <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 p-1 border border-cyan-500/30 shrink-0 overflow-hidden">
-            <img src="/verse_logo.jpg" alt="Verse Logo" className="w-full h-full object-cover rounded-xl" />
+            <img 
+              src="/verse_logo.jpg" 
+              alt="Verse Logo" 
+              className="w-full h-full object-cover rounded-xl" 
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = 'https://i.ibb.co.com/nqHkRw7V/IMG-20260724-011109-166.jpg';
+              }}
+            />
           </div>
           <div>
             <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight font-mono">

@@ -1000,6 +1000,9 @@ export default function LiveCryptoMarketChart({ language }: LiveCryptoMarketChar
               src="/verse_logo.jpg" 
               alt="Verse Logo" 
               className="h-8 w-8 object-cover rounded-full border border-cyan-400/40 shadow-md shrink-0" 
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = 'https://i.ibb.co.com/nqHkRw7V/IMG-20260724-011109-166.jpg';
+              }}
             />
             <h3 className="text-lg md:text-xl font-black text-white uppercase italic tracking-tight font-mono">
               Explore Verse Ecosystem Features
